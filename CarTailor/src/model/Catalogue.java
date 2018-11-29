@@ -2,8 +2,8 @@ package model;
 import java.util.ArrayList;
 
 import Impl.CategoryImpl;
-import Impl.IncompatibilitiesImpl;
-import Impl.RequirementsImpl;
+import Impl.IncompatibilityManagerImpl;
+
 
 public class Catalogue {
 	
@@ -12,73 +12,73 @@ public class Catalogue {
 	public Catalogue() {
 		this.catalogue = new String[18][5]; 
 		
-		addPartTocatalogue(new CategoryImpl("Engine"), new Name("EG100"),
-				new Description("Gasoline, 100 kW"), new IncompatibilitiesImpl(), new RequirementsImpl());
+		addPartTocatalogue(new CategoryImpl("Engine"), new PartName("EG100"),
+				new PartDescription("Gasoline, 100 kW"), new IncompatibilityManagerImpl());
 
-		addPartTocatalogue(new CategoryImpl("Engine"), new Name("EG133"),
-				new Description("Gasoline, 133 kW"), new IncompatibilitiesImpl(), new RequirementsImpl());
+		addPartTocatalogue(new CategoryImpl("Engine"), new PartName("EG133"),
+				new PartDescription("Gasoline, 133 kW"), new IncompatibilityManagerImpl());
 		
-		addPartTocatalogue(new CategoryImpl("Engine"), new Name("EG210"),
-				new Description("Gasoline, 210 kW"), new IncompatibilitiesImpl(), new RequirementsImpl());
+		addPartTocatalogue(new CategoryImpl("Engine"), new PartName("EG210"),
+				new PartDescription("Gasoline, 210 kW"), new IncompatibilityManagerImpl());
 		
-		addPartTocatalogue(new CategoryImpl("Engine"), new Name("ED110"),
-				new Description("Diesel, 110 kW"), new IncompatibilitiesImpl(), new RequirementsImpl());
+		addPartTocatalogue(new CategoryImpl("Engine"), new PartName("ED110"),
+				new PartDescription("Diesel, 110 kW"), new IncompatibilityManagerImpl());
 		
-		addPartTocatalogue(new CategoryImpl("Engine"), new Name("EG180"),
-				new Description("Diesel, 180 kW"), new IncompatibilitiesImpl(), new RequirementsImpl());
+		addPartTocatalogue(new CategoryImpl("Engine"), new PartName("EG180"),
+				new PartDescription("Diesel, 180 kW"), new IncompatibilityManagerImpl());
 		
-		addPartTocatalogue(new CategoryImpl("Engine"), new Name("EH120"),
-				new Description("Gasoline/electric hybrid, 120 kW"), new IncompatibilitiesImpl(), new RequirementsImpl());	
+		addPartTocatalogue(new CategoryImpl("Engine"), new PartName("EH120"),
+				new PartDescription("Gasoline/electric hybrid, 120 kW"), new IncompatibilityManagerImpl());	
 		
 		
-		addPartTocatalogue(new CategoryImpl("Transmission"), new Name("TM5"),
-				new Description("Manual, 5 gears"), new IncompatibilitiesImpl(), new RequirementsImpl());
+		addPartTocatalogue(new CategoryImpl("Transmission"), new PartName("TM5"),
+				new PartDescription("Manual, 5 gears"), new IncompatibilityManagerImpl());
 		
-		addPartTocatalogue(new CategoryImpl("Transmission"), new Name("TM6"),
-				new Description("Manual, 6 gears"), new IncompatibilitiesImpl(), new RequirementsImpl());
+		addPartTocatalogue(new CategoryImpl("Transmission"), new PartName("TM6"),
+				new PartDescription("Manual, 6 gears"), new IncompatibilityManagerImpl());
 		
-		addPartTocatalogue(new CategoryImpl("Transmission"), new Name("TA5"),
-				new Description("Automatic, 5 gears"), new IncompatibilitiesImpl(), new RequirementsImpl());
+		addPartTocatalogue(new CategoryImpl("Transmission"), new PartName("TA5"),
+				new PartDescription("Automatic, 5 gears"), new IncompatibilityManagerImpl());
 		
-		addPartTocatalogue(new CategoryImpl("Transmission"), new Name("TS6"),
-				new Description("Sequential, 6 gears"), new IncompatibilitiesImpl(), new RequirementsImpl());
+		addPartTocatalogue(new CategoryImpl("Transmission"), new PartName("TS6"),
+				new PartDescription("Sequential, 6 gears"), new IncompatibilityManagerImpl());
 		
-		addPartTocatalogue(new CategoryImpl("Transmission"), new Name("TSF7"),
-				new Description("Sequential, 7 gears, 4 wheels drive"), new IncompatibilitiesImpl(), new RequirementsImpl());
+		addPartTocatalogue(new CategoryImpl("Transmission"), new PartName("TSF7"),
+				new PartDescription("Sequential, 7 gears, 4 wheels drive"), new IncompatibilityManagerImpl());
 		
-		addPartTocatalogue(new CategoryImpl("Transmission"), new Name("TC120"),
-				new Description("Converter, 120 kW max"), new IncompatibilitiesImpl(), new RequirementsImpl());
+		addPartTocatalogue(new CategoryImpl("Transmission"), new PartName("TC120"),
+				new PartDescription("Converter, 120 kW max"), new IncompatibilityManagerImpl());
 		
-		addPartTocatalogue(new CategoryImpl("Exterior"), new Name("XC"),
-				new Description("Classic paint"), new IncompatibilitiesImpl(), new RequirementsImpl());
+		addPartTocatalogue(new CategoryImpl("Exterior"), new PartName("XC"),
+				new PartDescription("Classic paint"), new IncompatibilityManagerImpl());
 		
-		addPartTocatalogue(new CategoryImpl("Exterior"), new Name("XM"),
-				new Description("Metalic paint"), new IncompatibilitiesImpl(), new RequirementsImpl());
+		addPartTocatalogue(new CategoryImpl("Exterior"), new PartName("XM"),
+				new PartDescription("Metalic paint"), new IncompatibilityManagerImpl());
 		
-		addPartTocatalogue(new CategoryImpl("Exterior"), new Name("XS"),
-				new Description("Red paint and sport decoration"), new IncompatibilitiesImpl(), new RequirementsImpl());
+		addPartTocatalogue(new CategoryImpl("Exterior"), new PartName("XS"),
+				new PartDescription("Red paint and sport decoration"), new IncompatibilityManagerImpl());
 		
-		addPartTocatalogue(new CategoryImpl("Interior"), new Name("IN"),
-				new Description("Standard interior"), new IncompatibilitiesImpl(), new RequirementsImpl());
+		addPartTocatalogue(new CategoryImpl("Interior"), new PartName("IN"),
+				new PartDescription("Standard interior"), new IncompatibilityManagerImpl());
 		
-		addPartTocatalogue(new CategoryImpl("Interior"), new Name("IH"),
-				new Description("high-end interior"), new IncompatibilitiesImpl(), new RequirementsImpl());
+		addPartTocatalogue(new CategoryImpl("Interior"), new PartName("IH"),
+				new PartDescription("high-end interior"), new IncompatibilityManagerImpl());
 		
-		addPartTocatalogue(new CategoryImpl("Interior"), new Name("IS"),
-				new Description("Sport finish"), new IncompatibilitiesImpl(), new RequirementsImpl());
+		addPartTocatalogue(new CategoryImpl("Interior"), new PartName("IS"),
+				new PartDescription("Sport finish"), new IncompatibilityManagerImpl());
 		
 	}
 	
-	public boolean addPartTocatalogue(CategoryImpl cat, Name name, Description description, IncompatibilitiesImpl compat, RequirementsImpl require) {
+	public boolean addPartTocatalogue(CategoryImpl cat, PartName PartName, PartDescription PartDescription, IncompatibilityManagerImpl ir) {
 		int i =0;
 		while(this.catalogue[i][0] != null) {
 			i ++;
 		}
 		this.catalogue[i][0] = cat.getCategory();
-		this.catalogue[i][1] = name.getName();
-		this.catalogue[i][2] = description.getDescription();
-		this.catalogue[i][3] = compat.getIncompatibility();
-		this.catalogue[i][4] = require.getRequirement();				
+		this.catalogue[i][1] = PartName.getName();
+		this.catalogue[i][2] = PartDescription.getDescription();
+		this.catalogue[i][3] = ir.getIncompatibilities().toString();
+		this.catalogue[i][4] = ir.getRequirements().toString();				
 		return true;
 	}
 	

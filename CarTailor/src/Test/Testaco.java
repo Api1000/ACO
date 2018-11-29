@@ -29,11 +29,11 @@ class Testaco {
 	ConfigImpl config1 = new ConfigImpl();
 	ConfigImpl part1 = new ConfigImpl("EG100","Gasoline, 100 kW","Engine"," ", " ");
 	ConfigImpl part2 = new ConfigImpl("TM5","Manual, 5 gears","Transmission","", "");
-	config1.addpart(part1);
-	config1.addpart(part2);
+	config1.addPart(part1);
+	config1.addPart(part2);
 	//System.out.println("coin");
 	System.out.println(config1.toString());
-	//config1.showlistpartcategories();
+	//config1.showconfiguration();
 	assertTrue(true);
 	}
 

@@ -6,10 +6,8 @@ import java.util.Set;
 import Interfaces.Category;
 import Interfaces.Part;
 import Interfaces.PartType;
-import model.Description;
-import Interfaces.Incompatibilities;
-import Interfaces.Requirements;
-import model.Name;
+import model.PartDescription;
+import model.PartName;
 
 
 /**
@@ -21,10 +19,10 @@ import model.Name;
 public class PartTypeImpl implements PartType
 {
 	public Category category;
-	public Name name;
-	public Description description;
-	public Incompatibilities incompatibility;
-	public Requirements requirements;
+	public PartName name;
+	public PartDescription description;
+	public IncompatibilityManagerImpl ir;
+
 	
 	
 	public Set<Part> partType;
@@ -49,12 +47,11 @@ public class PartTypeImpl implements PartType
 		super();
 	}
 	
-	public PartTypeImpl(Name name, Description description, Category category, Incompatibilities incompatibility,Requirements requirements ) {
+	public PartTypeImpl(PartName name, PartDescription description, Category category, IncompatibilityManagerImpl ir ) {
 		this.name = name;
 		this.description = description;
 		this.category = category;
-		this.incompatibility = incompatibility;
-		this.requirements = requirements;
+		this.ir = ir;
 	}
 
 }
