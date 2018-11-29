@@ -8,10 +8,6 @@ package Interfaces;
 
 public interface Part
 {
-	String partName = new String();
-	String partDescription = new String();
-	String incompatibilities = new String();
-	String requirements = new String();
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!--  end-user-doc  -->

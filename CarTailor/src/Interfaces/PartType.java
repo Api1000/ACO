@@ -11,8 +11,7 @@ import java.util.Set;
 
 public interface PartType
 {
-	
-	PartType pt = new PartType;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!--  end-user-doc  -->

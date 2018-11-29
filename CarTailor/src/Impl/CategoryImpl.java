@@ -11,39 +11,53 @@ import Interfaces.Category;
  * @generated
  */
 public class CategoryImpl implements Category {
-	Category category;
+	String category;
 
 
 	public CategoryImpl(){
-		super();
+		this.category = new String();
 	}
 	
 
-	public CategoryImpl(Category category) {
+	public CategoryImpl(String category) {
 		this.category = category;
 	}
 	
-	public boolean addcategory(Category category) {
+	
+	public boolean removeCategory(String category) {
+		// TODO implement me
+		return false;
+	}
+	
+	
+	public boolean addCategory(String category) {
 		// TODO implement me
 		return false;
 	}
 
-
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!--  end-user-doc  -->
+	 * @generated
+	 * @ordered
+	 */
 	
-	public boolean removecategory(Category category) {
+	public String getCategory() {
 		// TODO implement me
-		return false;
+		return null;
 	}
 
 
-	public Category getCategory() {
-		return this.category;
-	}
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!--  end-user-doc  -->
+	 * @generated
+	 * @ordered
+	 */
 
 
-	public void setCategory(Category category) {
-		this.category = category;
-	}
+
+
 	
 	
 }

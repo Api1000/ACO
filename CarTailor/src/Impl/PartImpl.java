@@ -2,22 +2,36 @@ package Impl;
 
 import Interfaces.Part;
 import Interfaces.PartType;
+import model.PartDescription;
+import model.PartName;
 
 public class PartImpl implements Part{
-	Part partName;
-	Part partDescription;
-	Part incompatibilities;
-	Part requirements;
 	
+	public CategoryImpl category;
+	public PartName name;
+	public PartDescription description;
+	public String incompatibilities;
+	public String requirements;
 	
-	public PartType addpart() {
-		// TODO Auto-generated method stub
-		return null;
+	public PartImpl() {
+		this.category = new String();
+		this.name = new String();
+		this.description = new String();
+		this.incompatibilities = new String();
+		this.requirements = new String();
+	}
+	
+	public PartImpl(String part) {
+		this.part = part;
+	}
+	
+	public boolean addpart(String part) {
+		return true;
 	}
 	
 	
-	public PartType removepart() {
+	public boolean removepart(String part) {
 		// TODO Auto-generated method stub
-		return null;
+		return false;
 	}
 }

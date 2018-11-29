@@ -2,7 +2,6 @@ package Interfaces;
 
 public interface Category {
 
-	public String categorie = new String();
 	/**
 		 * <!-- begin-user-doc -->
 		 * <!--  end-user-doc  -->
@@ -17,7 +16,7 @@ public interface Category {
 		 * @ordered
 		 */
 		
-		public boolean addcategory(Category category); 
+		public boolean addCategory(String category); 
 
 		/**
 		 * <!-- begin-user-doc -->
@@ -26,9 +25,10 @@ public interface Category {
 		 * @ordered
 		 */
 		
-		public boolean removecategory(Category category); 
+		public boolean removeCategory(String category); 
 		
 
+		public String getCategory();
 	}
 
 

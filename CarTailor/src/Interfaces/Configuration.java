@@ -77,9 +77,9 @@ public interface Configuration
 	 * @ordered
 	 */
 	
-	public boolean removepart(PartTypeImpl partype);
+	public boolean removepart(Part part);
 	
-	public boolean addpart (PartTypeImpl partype);
+	public boolean addpart (Part part);
 
 }
 

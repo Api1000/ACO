@@ -2,8 +2,10 @@ package Impl;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 
 import Interfaces.Configuration;
+import Interfaces.Part;
 import Interfaces.PartType;
 
 public class ConfigImpl implements Configuration{
@@ -16,21 +18,27 @@ public class ConfigImpl implements Configuration{
 	 * @generated
 	 * @ordered
 	 */
-	public ArrayList<PartTypeImpl> MyPart;
+	public ArrayList<PartImpl> MyPart;
+
 	
 	
 	public ConfigImpl() {
-		this.MyPart = new ArrayList<PartTypeImpl>();
+		this.MyPart = new ArrayList<PartImpl>();
 	}
 	
-	public ConfigImpl(ArrayList<PartTypeImpl> MyPart) {
+	public ConfigImpl(ArrayList<PartImpl> MyPart) {
 		this.MyPart = MyPart;
 	}
+	
+	public boolean addPart(PartName part) {
+		
+	}
+
 	
 	
 	public Configuration getconfiguration() {
 		Configuration config = new ConfigImpl();
-		for(PartTypeImpl PT : this.MyPart) {
+		for(Part PT : this.MyPart) {
 			config.addpart(PT);
 		}
 		return config;
@@ -101,32 +109,7 @@ public class ConfigImpl implements Configuration{
 	 * @ordered
 	 */
 	
-	public boolean removepart(PartTypeImpl parttype) {
-		//PartType part = new PartType(new Name(), new Description(), new CategoryImpl());
-		for(PartType PT : this.MyPart) {
-			if(PT.equals(parttype)) {
-				MyPart.remove(PT);
-				return true;
-			}
-		}
-		return false;
-	}
 
 	
-
-	public boolean addpart(PartTypeImpl parttype) {
-		//System.out.println("coin");
-		Boolean result = false;
-		result = MyPart.add(parttype);
-		return result;
-	}
 	
-	@Override
-	public String toString() {
-		String result="";
-		for(PartTypeImpl PT : this.MyPart) {
-			result += PT.Name.Name + " " + PT.Description.Description + " " + PT.CategoryImpl.CategoryImpl + "\n";
-		}
-		return result;
-	}
 }
