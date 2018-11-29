@@ -7,13 +7,13 @@ import org.junit.jupiter.api.Test;
 
 import Impl.CategoryImpl;
 import Impl.ConfigImpl;
-import Impl.IncompatibilitiesImpl;
+import Impl.IncompatibilityManagerImpl;
+import Impl.PartImpl;
 import Impl.PartTypeImpl;
-import Impl.RequirementsImpl;
 import Interfaces.Configuration;
 import model.Catalogue;
-import model.Description;
-import model.Name;
+import model.PartDescription;
+import model.PartName;
 
 class Testaco {
 
@@ -27,8 +27,8 @@ class Testaco {
 	@Test
 	public void testPartImpl() {
 	ConfigImpl config1 = new ConfigImpl();
-	ConfigImpl part1 = new ConfigImpl("EG100","Gasoline, 100 kW","Engine"," ", " ");
-	ConfigImpl part2 = new ConfigImpl("TM5","Manual, 5 gears","Transmission","", "");
+	PartImpl part1 = new PartImpl(new CategoryImpl("EG100"),new PartName("Gasoline, 100 kW"),new PartDescription("Engine"),new IncompatibilityManagerImpl());
+	PartImpl part2 = new PartImpl(new CategoryImpl("TM5"),new PartName("Gasoline, 100 kW"),new PartDescription("Engine"),new IncompatibilityManagerImpl());
 	config1.addPart(part1);
 	config1.addPart(part2);
 	//System.out.println("coin");
