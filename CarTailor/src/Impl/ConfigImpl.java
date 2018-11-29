@@ -33,6 +33,8 @@ public class ConfigImpl implements Configuration{
 		this.myConfig = MyPart;
 	}
 	
+	
+	
 	@SuppressWarnings("unlikely-arg-type")
 	public boolean addPart(PartName pn) {
 		Catalogue c = new Catalogue();
@@ -56,6 +58,14 @@ public class ConfigImpl implements Configuration{
 	 * @generated
 	 * @ordered
 	 */
+	
+	
+	public void showConfiguration() {
+		ConfigImpl config = new ConfigImpl();
+		config.getConfiguration();
+		System.out.println(config);
+	}
+	
 	
 	public void showlistpartcategories() { //affiche les categories de MyPart
 		

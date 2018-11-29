@@ -9,8 +9,6 @@ import Impl.CategoryImpl;
 import Impl.ConfigImpl;
 import Impl.IncompatibilityManagerImpl;
 import Impl.PartImpl;
-import Impl.PartTypeImpl;
-import Interfaces.Configuration;
 import model.Catalogue;
 import model.PartDescription;
 import model.PartName;
@@ -27,11 +25,15 @@ class Testaco {
 	@Test
 	public void testPartImpl() {
 	ConfigImpl config1 = new ConfigImpl();
+	System.out.println("1");
 	PartImpl part1 = new PartImpl(new CategoryImpl("EG100"),new PartName("Gasoline, 100 kW"),new PartDescription("Engine"),new IncompatibilityManagerImpl());
+	System.out.println("1");
 	PartImpl part2 = new PartImpl(new CategoryImpl("TM5"),new PartName("Gasoline, 100 kW"),new PartDescription("Engine"),new IncompatibilityManagerImpl());
-	config1.addPart(part1);
-	config1.addPart(part2);
+	System.out.println("1");
+	config1.addPart(part1.name.partName);
+	config1.addPart(part2.name);
 	//System.out.println("coin");
+	System.out.println("coucou");
 	System.out.println(config1.toString());
 	//config1.showconfiguration();
 	assertTrue(true);
