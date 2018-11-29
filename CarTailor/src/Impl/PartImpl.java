@@ -1,8 +1,6 @@
 package Impl;
 
-import Interfaces.IncompatibilityManager;
 import Interfaces.Part;
-import Interfaces.PartType;
 import model.PartDescription;
 import model.PartName;
 
@@ -11,7 +9,7 @@ public class PartImpl implements Part{
 	public CategoryImpl category;
 	public PartName name;
 	public PartDescription description;
-	public IncompatibilityManager im;
+	public IncompatibilityManagerImpl im;
 	
 	public PartImpl() {
 		this.category = new CategoryImpl();
@@ -20,17 +18,21 @@ public class PartImpl implements Part{
 		this.im = new IncompatibilityManagerImpl();
 	}
 	
-	public PartImpl(String part) {
-		this.part = part;
+	public PartImpl(CategoryImpl category,PartName name,PartDescription description) {
+		this.category = category;
+		this.name = name;
+		this.description = description;
+	}
+
+
+	
+	public PartImpl(CategoryImpl category,PartName name,PartDescription description,IncompatibilityManagerImpl im) {
+		this.category = category;
+		this.name = name;
+		this.description = description;
+		this.im = im;
 	}
 	
-	public boolean addpart(String part) {
-		return true;
-	}
-	
-	
-	public boolean removepart(String part) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+
+
 }

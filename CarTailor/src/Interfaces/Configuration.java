@@ -1,6 +1,9 @@
 package Interfaces;
 
-import Impl.PartTypeImpl;
+import java.util.ArrayList;
+
+import Impl.PartImpl;
+import model.PartName;
 
 /**
  * <!-- begin-user-doc -->
@@ -10,12 +13,21 @@ import Impl.PartTypeImpl;
 
 public interface Configuration 
 {
+	
+
+	public boolean addPart(PartName pn);
+
+	
+	
+	public ArrayList<PartImpl> getConfiguration() ;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!--  end-user-doc  -->
 	 * @generated
+	 * @ordered
 	 */
-
+	
+	public void showlistpartcategories() ;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -24,26 +36,7 @@ public interface Configuration
 	 * @ordered
 	 */
 	
-	public Configuration getconfiguration();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	
-	public void showlistpartcategories();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	
-	public void selectcategory();
-
+	public void selectcategory() ;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!--  end-user-doc  -->
@@ -60,7 +53,8 @@ public interface Configuration
 	 * @ordered
 	 */
 	
-	public boolean isvalidconfiguration();
+	public boolean isvalidconfiguration() ;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!--  end-user-doc  -->
@@ -69,17 +63,5 @@ public interface Configuration
 	 */
 	
 	public boolean isincompatible();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	
-	public boolean removepart(Part part);
-	
-	public boolean addpart (Part part);
-
 }
 
