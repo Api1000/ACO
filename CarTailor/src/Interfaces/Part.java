@@ -31,15 +31,7 @@ public interface Part
 	 * @ordered
 	 */
 	
-	public PartType addpart();
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	
-	public PartType removepart() ;
+
 
 }
 

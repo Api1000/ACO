@@ -7,6 +7,7 @@ import java.util.Collection;
 import Interfaces.Configuration;
 import Interfaces.Part;
 import Interfaces.PartType;
+import model.PartName;
 
 public class ConfigImpl implements Configuration{
 	
@@ -18,31 +19,33 @@ public class ConfigImpl implements Configuration{
 	 * @generated
 	 * @ordered
 	 */
-	public ArrayList<PartImpl> MyPart;
+	public ArrayList<PartImpl> MyConfig;
 
 	
 	
 	public ConfigImpl() {
-		this.MyPart = new ArrayList<PartImpl>();
+		this.MyConfig = new ArrayList<PartImpl>();
 	}
 	
 	public ConfigImpl(ArrayList<PartImpl> MyPart) {
-		this.MyPart = MyPart;
+		this.MyConfig = MyPart;
 	}
 	
 	public boolean addPart(PartName part) {
-		
+		return false;
+	}
+	
+	public boolean removePart(PartName part) {
+		return false;
 	}
 
 	
 	
-	public Configuration getconfiguration() {
-		Configuration config = new ConfigImpl();
-		for(Part PT : this.MyPart) {
-			config.addpart(PT);
-		}
-		return config;
+	
+	public ArrayList<PartImpl> getConfiguration() {
+		return MyConfig;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -52,7 +55,8 @@ public class ConfigImpl implements Configuration{
 	 */
 	
 	public void showlistpartcategories() { //affiche les categories de MyPart
-		Configuration config = getconfiguration();
+		ConfigImpl config = new ConfigImpl();
+		config.getConfiguration();
 		System.out.println(config);
 	}
 

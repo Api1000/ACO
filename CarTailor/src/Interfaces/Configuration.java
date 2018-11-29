@@ -1,6 +1,10 @@
 package Interfaces;
 
+import java.util.ArrayList;
+
+import Impl.PartImpl;
 import Impl.PartTypeImpl;
+import model.PartName;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,7 +28,7 @@ public interface Configuration
 	 * @ordered
 	 */
 	
-	public Configuration getconfiguration();
+	public ArrayList<PartImpl> getConfiguration();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -77,9 +81,9 @@ public interface Configuration
 	 * @ordered
 	 */
 	
-	public boolean removepart(Part part);
+	public boolean removePart(PartName part);
 	
-	public boolean addpart (Part part);
+	public boolean addPart (PartName part);
 
 }
 

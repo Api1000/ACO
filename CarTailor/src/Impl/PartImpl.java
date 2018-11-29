@@ -20,17 +20,12 @@ public class PartImpl implements Part{
 		this.im = new IncompatibilityManagerImpl();
 	}
 	
-	public PartImpl(String part) {
-		this.part = part;
+	public PartImpl(CategoryImpl Category, PartName Name, PartDescription Description, IncompatibilityManagerImpl ir) {
+		this.category = Category;
+		this.name = Name;
+		this.description = Description;
+		
 	}
 	
-	public boolean addpart(String part) {
-		return true;
-	}
-	
-	
-	public boolean removepart(String part) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+
 }
