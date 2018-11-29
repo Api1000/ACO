@@ -33,6 +33,8 @@ public class ConfigImpl implements Configuration{
 		this.myConfig = MyPart;
 	}
 	
+	
+	
 	@SuppressWarnings("unlikely-arg-type")
 	public boolean addPart(PartName pn) {
 		Catalogue c = new Catalogue();
