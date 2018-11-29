@@ -14,4 +14,11 @@ public class PartName {
 	public String getName() {
 		return this.partName;
 	}
+
+	@Override
+	public String toString() {
+		return "["+ partName + "]" ;
+	}
+	
+	
 }

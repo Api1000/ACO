@@ -58,6 +58,13 @@ public class IncompatibilityManagerImpl implements IncompatibilityManager {
 		return false;
 	}
 
+	@Override
+	public String toString() {
+		return "[" + incompatibility + "," + requirement + "]";
+	}
+	
+	
+
 	
 	
 	

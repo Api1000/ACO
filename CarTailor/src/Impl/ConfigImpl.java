@@ -1,12 +1,8 @@
 package Impl;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 
 import Interfaces.Configuration;
-import Interfaces.Part;
-import Interfaces.PartType;
 import model.Catalogue;
 import model.PartDescription;
 import model.PartName;
@@ -35,14 +31,15 @@ public class ConfigImpl implements Configuration{
 	
 	
 	
-	@SuppressWarnings("unlikely-arg-type")
+
 	public boolean addPart(PartName pn) {
 		Catalogue c = new Catalogue();
 		PartImpl p = new PartImpl();
 		for(int i=0;i < c.catalogue.length; i++) {
-			if(c.catalogue[1][i].equals(p)) {
+			if(pn.partName.toString().equals(c.catalogue[i][1])) {
+				//System.out.println("coucou");
 				p = new PartImpl(new CategoryImpl(c.catalogue[i][0]), new PartName(c.catalogue[i][1]), new PartDescription(c.catalogue[i][2]));
-				myConfig.add(p);
+				this.myConfig.add(p);
 				return true;
 			}
 		}
@@ -120,6 +117,8 @@ public class ConfigImpl implements Configuration{
 	public ArrayList<PartImpl> getConfiguration() {
 		return this.myConfig;
 	}
+
+
 
 	/**
 	 * <!-- begin-user-doc -->

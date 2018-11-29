@@ -32,6 +32,13 @@ public class PartImpl implements Part{
 		this.description = description;
 		this.im = im;
 	}
+
+	@Override
+	public String toString() {
+		return "category=" + category + ", name=" + name + ", description=" + description + ", im=" + im
+				;
+	}
+	
 	
 
 
