@@ -1,5 +1,6 @@
 package Impl;
 
+import Interfaces.IncompatibilityManager;
 import Interfaces.Part;
 import Interfaces.PartType;
 import model.PartDescription;
@@ -10,15 +11,13 @@ public class PartImpl implements Part{
 	public CategoryImpl category;
 	public PartName name;
 	public PartDescription description;
-	public String incompatibilities;
-	public String requirements;
+	public IncompatibilityManager im;
 	
 	public PartImpl() {
-		this.category = new String();
-		this.name = new String();
-		this.description = new String();
-		this.incompatibilities = new String();
-		this.requirements = new String();
+		this.category = new CategoryImpl();
+		this.name = new PartName();
+		this.description = new PartDescription();
+		this.im = new IncompatibilityManagerImpl();
 	}
 	
 	public PartImpl(String part) {
