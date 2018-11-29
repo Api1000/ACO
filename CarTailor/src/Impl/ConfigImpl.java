@@ -54,12 +54,16 @@ public class ConfigImpl implements Configuration{
 	 * @ordered
 	 */
 	
-	public void showlistpartcategories() { //affiche les categories de MyPart
+	public void showconfiguration() { //affiche les categories de MyPart
 		ConfigImpl config = new ConfigImpl();
 		config.getConfiguration();
 		System.out.println(config);
 	}
 
+	
+	public void showlistpartcategories() { 
+		
+	}
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!--  end-user-doc  -->

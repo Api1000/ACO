@@ -33,7 +33,7 @@ class Testaco {
 	config1.addPart(part2);
 	//System.out.println("coin");
 	System.out.println(config1.toString());
-	//config1.showlistpartcategories();
+	//config1.showconfiguration();
 	assertTrue(true);
 	}
 
