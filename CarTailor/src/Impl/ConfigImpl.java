@@ -50,7 +50,17 @@ public class ConfigImpl implements Configuration{
 	}
 
 
-	
+	@SuppressWarnings("unlikely-arg-type")
+	public boolean removePart(PartName pn) {
+		for (PartImpl part : this.myConfig) {
+			if (part.name.equals(pn.partName)) {
+				this.myConfig.remove(part);
+				return true;
+			}
+		}
+		return false;
+	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -119,6 +129,11 @@ public class ConfigImpl implements Configuration{
 
 	public ArrayList<PartImpl> getConfiguration() {
 		return this.myConfig;
+	}
+
+	@Override
+	public String toString() {
+		return "ConfigImpl [myConfig=" + myConfig + "]";
 	}
 
 	/**
