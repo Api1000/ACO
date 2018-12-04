@@ -27,7 +27,7 @@ public interface Configuration
 	 * @ordered
 	 */
 	
-	public void showlistpartcategories() ;
+	public void showPartCategories();
 
 	/**
 	 * <!-- begin-user-doc -->
