@@ -1,7 +1,9 @@
 package Interfaces;
 
 import java.util.ArrayList;
+import java.util.Set;
 
+import Impl.CategoryImpl;
 import Impl.PartImpl;
 import model.PartName;
 
@@ -19,7 +21,7 @@ public interface Configuration
 
 	
 	
-	public ArrayList<PartImpl> getConfiguration() ;
+	public ArrayList<Part> getConfiguration() ;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!--  end-user-doc  -->
@@ -27,7 +29,7 @@ public interface Configuration
 	 * @ordered
 	 */
 	
-	public void showlistpartcategories() ;
+	public Set<Category> showlistpartcategories() ;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -62,6 +64,6 @@ public interface Configuration
 	 * @ordered
 	 */
 	
-	public boolean isincompatible();
+	public boolean iscompatible();
 }
 

@@ -33,9 +33,20 @@ public class Testaco {
 		config1.addPart(part1.name);
 		// System.out.println("coin");
 		System.out.println("coucou");
-		//System.out.println(config1.toString());
+		System.out.println(config1.toString());
 		// config1.showconfiguration();
 		//assertTrue(true);
+	}
+	
+	public void testPartImpl() {
+	ConfigImpl config1 = new ConfigImpl();
+	PartImpl part1 = new PartImpl(new CategoryImpl("Engine"),new PartName("EG100"),new PartDescription("Gasoline, 100 kW"),new IncompatibilityManagerImpl());
+	PartImpl part2 = new PartImpl(new CategoryImpl("Engine"),new PartName("ED180"),new PartDescription("Diesel, 180kW"),new IncompatibilityManagerImpl());
+	config1.addPart(part1.name);
+	config1.addPart(part2.name);
+	//System.out.println("coin");
+	System.out.println(config1.myConfig.toString());
+	//config1.showconfiguration();
 	}
 
 

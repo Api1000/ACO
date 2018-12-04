@@ -1,10 +1,13 @@
 package Impl;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
+import Interfaces.Category;
 import Interfaces.Configuration;
+import Interfaces.IncompatibilityManager;
 import Interfaces.Part;
 import Interfaces.PartType;
 import model.Catalogue;
@@ -17,55 +20,82 @@ public class ConfigImpl implements Configuration{
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
+	 * <!--  Engined-user-doc  -->
+	 * @gEngineerated
 	 * @ordered
 	 */
-	public ArrayList<PartImpl> myConfig;
-
+	public ArrayList<Part> myConfig;
+	public Map<Category,ArrayList<Part>> catalogue = new HashMap<Category,ArrayList<Part>>();
 	
 	
-	public ConfigImpl() {
+	/*public ConfigImpl() {
 		this.myConfig = new ArrayList<PartImpl>();
 	}
 	
 	public ConfigImpl(ArrayList<PartImpl> MyPart) {
 		this.myConfig = MyPart;
+	}*/
+	
+	
+		
+	
+	public ConfigImpl() {
+		this.myConfig = new ArrayList<Part>();
 	}
 	
+	public ConfigImpl(ArrayList<Part> MyPart) {
+		this.myConfig = MyPart;
+	}
 	
+	public ArrayList<Part> getConfiguration() {
+		return this.myConfig;
+	}
+
 	
-	@SuppressWarnings("unlikely-arg-type")
+
+	public Map<Category, ArrayList<Part>> getCatalogue() {
+		return catalogue;
+	}
+
+	
+
 	public boolean addPart(PartName pn) {
 		Catalogue c = new Catalogue();
-		PartImpl p = new PartImpl();
+		Part p = new PartImpl();
+		for(Part pi : this.myConfig) {
+			if(pi.getName().toString().equals(pn.partName.toString())) {
+				return false;
+			}
+		}
 		for(int i=0;i < c.catalogue.length; i++) {
-			if(c.catalogue[1][i].equals(p)) {
+			if(pn.partName.toString().equals(c.catalogue[i][1])) {
+				//System.out.println("coucou");
 				p = new PartImpl(new CategoryImpl(c.catalogue[i][0]), new PartName(c.catalogue[i][1]), new PartDescription(c.catalogue[i][2]));
-				myConfig.add(p);
+				this.myConfig.add(p);
 				return true;
 			}
 		}
 		return false;
 	}
 
-
-	@SuppressWarnings("unlikely-arg-type")
 	public boolean removePart(PartName pn) {
-		for (PartImpl part : this.myConfig) {
-			if (part.name.equals(pn.partName)) {
-				this.myConfig.remove(part);
-				return true;
+		Catalogue c = new Catalogue();
+		for(int i=0; i<c.catalogue.length; i++) {
+			if(!pn.partName.toString().equals(c.catalogue[i][1])) {
+				return false;
+			}
+			else {
+				myConfig.remove(i);
 			}
 		}
-		return false;
-	}
+		return true;
+}
 
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
+	 * <!--  Engined-user-doc  -->
+	 * @gEngineerated
 	 * @ordered
 	 */
 	
@@ -77,69 +107,137 @@ public class ConfigImpl implements Configuration{
 	}
 	
 	
-	public void showlistpartcategories() { //affiche les categories de MyPart
-		
+	
+	public ArrayList<Part> selectCategory(Category category) {
+		assert catalogue.containsKey(category) : "La categorie n'existe pas";
+		return catalogue.get(category);
+		}
+
+	
+	
+	
+	public boolean isvalidconfiguration() {
+		if(this.myConfig.size() != 4) {
+			return false;
+		}
+		else {
+			Boolean[] tab = new Boolean[4];
+			for(Part part : this.myConfig) {
+				Category cat = part.getCategory();
+				if(cat.getCategory() == "Engine") {
+					if(tab[0] == true) {
+						return false;
+					}
+					else
+						tab[0] = true;
+				}
+				if(cat.getCategory() == "Transmission") {
+					if(tab[1] == true) {
+						return false;
+					}
+					else
+						tab[1] = true;
+				}
+				if(cat.getCategory() == "Exterior") {
+					if(tab[2] == true) {
+						return false;
+					}
+					else
+						tab[2] = true;
+				}
+				if(cat.getCategory() == "Interior") {
+					if(tab[3] == true) {
+						return false;
+					}
+					else
+					tab[3] = true;
+				}
+			}
+			return iscompatible();
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!--  end-user-doc  -->
 	 * @generated
+	 * @ordered
+	 */
+	
+	public boolean iscompatible() {
+		ArrayList<Part> config = this.myConfig;
+		for(Part myPart : config) {
+			IncompatibilityManager incomp = myPart.getIm();
+			if(incomp.getIncompatibilities() != null) {
+				for(Part incompatPart : incomp.getIncompatibilities()) {
+					if(config.contains(incompatPart))
+						return false;
+				}
+			}
+			if(incomp.getRequirements() != null) {
+					if(!config.containsAll(incomp.getRequirements())) {
+						return false;
+					}
+				}
+		 }
+		 return true;
+	}
+
+	
+	public Set<Category> showlistpartcategories() { //affiche les categories de MyPart
+		return catalogue.keySet();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!--  Engined-user-doc  -->
+	 * @gEngineerated
 	 * @ordered
 	 */
 	
 	public void selectcategory() {
-		// TODO implement me
+		// TODO implemEnginet me
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
+	 * <!--  Engined-user-doc  -->
+	 * @gEngineerated
 	 * @ordered
 	 */
 	
 	public void selectpartcategory() {
-		// TODO implement me
+		// TODO implemEnginet me
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
+	 * <!--  Engined-user-doc  -->
+	 * @gEngineerated
 	 * @ordered
 	 */
 	
-	public boolean isvalidconfiguration() {
-		// TODO implement me
-		return false;
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
+	 * <!--  Engined-user-doc  -->
+	 * @gEngineerated
 	 * @ordered
 	 */
 	
-	public boolean isincompatible() {
-		// TODO implement me
-		return false;
-	}
-
-	public ArrayList<PartImpl> getConfiguration() {
-		return this.myConfig;
-	}
 
 	@Override
 	public String toString() {
 		return "ConfigImpl [myConfig=" + myConfig + "]";
 	}
 
+
+//>>>>>>> branch 'master' of https://github.com/Api1000/ACO
+
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
+	 * <!--  Engined-user-doc  -->
+	 * @gEngineerated
 	 * @ordered
 	 */
 	

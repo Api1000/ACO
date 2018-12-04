@@ -43,8 +43,13 @@ public class CategoryImpl implements Category {
 	 */
 	
 	public String getCategory() {
-		// TODO implement me
-		return null;
+		return this.category;
+	}
+
+
+	@Override
+	public String toString() {
+		return  "[" + category + "]" ;
 	}
 
 
@@ -55,7 +60,7 @@ public class CategoryImpl implements Category {
 	 * @ordered
 	 */
 
-
+	
 
 
 	

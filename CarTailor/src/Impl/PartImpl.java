@@ -32,6 +32,47 @@ public class PartImpl implements Part{
 		this.description = description;
 		this.im = im;
 	}
+
+	
+	
+	public CategoryImpl getCategory() {
+		return category;
+	}
+
+	public void setCategory(CategoryImpl category) {
+		this.category = category;
+	}
+
+	public PartName getName() {
+		return name;
+	}
+
+	public void setName(PartName name) {
+		this.name = name;
+	}
+
+	public PartDescription getDescription() {
+		return description;
+	}
+
+	public void setDescription(PartDescription description) {
+		this.description = description;
+	}
+
+	public IncompatibilityManagerImpl getIm() {
+		return im;
+	}
+
+	public void setIm(IncompatibilityManagerImpl im) {
+		this.im = im;
+	}
+
+	@Override
+	public String toString() {
+		return "category=" + category + ", name=" + name + ", description=" + description + ", im=" + im
+				;
+	}
+	
 	
 
 

@@ -7,11 +7,11 @@ import model.PartName;
 
 public interface IncompatibilityManager {
 
-	public ArrayList<PartName> getIncompatibilities();
+	public ArrayList<Part> getIncompatibilities();
 	
-	public ArrayList<PartName> getRequirements();
+	public ArrayList<Part> getRequirements();
 	
-	public boolean addRequirement(ArrayList<PartName> requirement);
+	public boolean addRequirement(ArrayList<Part> requirement);
 	
-	public boolean addIncompatibility(ArrayList<PartName> incompatibility);
+	public boolean addIncompatibility(ArrayList<Part> incompatibility);
 }

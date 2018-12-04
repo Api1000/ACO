@@ -1,5 +1,6 @@
 package model;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import Impl.CategoryImpl;
 import Impl.IncompatibilityManagerImpl;
@@ -67,6 +68,7 @@ public class Catalogue {
 		addPartTocatalogue(new CategoryImpl("Interior"), new PartName("IS"),
 				new PartDescription("Sport finish"), new IncompatibilityManagerImpl());
 		
+		
 	}
 	
 	public boolean addPartTocatalogue(CategoryImpl cat, PartName PartName, PartDescription PartDescription, IncompatibilityManagerImpl ir) {
@@ -77,8 +79,8 @@ public class Catalogue {
 		this.catalogue[i][0] = cat.getCategory();
 		this.catalogue[i][1] = PartName.getName();
 		this.catalogue[i][2] = PartDescription.getDescription();
-		this.catalogue[i][3] = ir.getIncompatibilities().toString();
-		this.catalogue[i][4] = ir.getRequirements().toString();				
+		this.catalogue[i][3] = String.join(", ", ir.getIncompatibilities().toString());
+		this.catalogue[i][4] =  String.join(", ", ir.getRequirements().toString());			
 		return true;
 	}
 	

@@ -5,36 +5,37 @@ import java.util.ArrayList;
 import Interfaces.IncompatibilityManager;
 import model.Catalogue;
 import model.PartName;
+import Interfaces.Part;
 
 public class IncompatibilityManagerImpl implements IncompatibilityManager {
-	public ArrayList<PartName> incompatibility;
-	public ArrayList<PartName> requirement;
+	public ArrayList<Part> incompatibility;
+	public ArrayList<Part> requirement;
 	
 	public IncompatibilityManagerImpl() {
-		this.incompatibility = new ArrayList<PartName>();
-		this.requirement = new ArrayList<PartName>();
+		this.incompatibility = new ArrayList<Part>();
+		this.requirement = new ArrayList<Part>();
 	}
 	
-	public IncompatibilityManagerImpl(ArrayList<PartName> incompatibility, ArrayList<PartName> requirement) {
+	public IncompatibilityManagerImpl(ArrayList<Part> incompatibility, ArrayList<Part> requirement) {
 		this.incompatibility = incompatibility;
 		this.requirement = requirement;
 	}
 	
 	
-	public ArrayList<PartName> getIncompatibilities() {
+	public ArrayList<Part> getIncompatibilities() {
 		return this.incompatibility;
 	}
 	
-	public ArrayList<PartName> getRequirements(){
+	public ArrayList<Part> getRequirements(){
 		return this.requirement;
 	}
 	
-	public boolean addRequirement(ArrayList<PartName> requirement) {
+	public boolean addRequirement(ArrayList<Part> requirement) {
 		Catalogue catalogue = new Catalogue();
-		for(PartName p : requirement) {
+		for(Part p : requirement) {
 			for(int i=0; i<catalogue.catalogue.length;i++) {
-				if(p.partName.equals(catalogue.catalogue[i][1])) {
-					PartName pn = new PartName(catalogue.catalogue[i][1]);
+				if(p.getName().equals(catalogue.catalogue[i][1])) {
+					Part pn = new Part(catalogue.catalogue[i][1]);
 					this.requirement.add(pn);
 					return true;
 				}
@@ -44,11 +45,11 @@ public class IncompatibilityManagerImpl implements IncompatibilityManager {
 	}
 	
 	
-	public boolean addIncompatibility(ArrayList<PartName> incompatibility) {
+	public boolean addIncompatibility(ArrayList<Part> incompatibility) {
 		Catalogue catalogue = new Catalogue();
-		for(PartName p : incompatibility) {
+		for(Part p : incompatibility) {
 			for(int i=0; i<catalogue.catalogue.length;i++) {
-				if(p.partName.equals(catalogue.catalogue[i][1])) {
+				if(p.getName().equals(catalogue.catalogue[i][1])) {
 					PartName pn = new PartName(catalogue.catalogue[i][1]);
 					this.incompatibility.add(pn);
 					return true;
@@ -57,6 +58,13 @@ public class IncompatibilityManagerImpl implements IncompatibilityManager {
 		}
 		return false;
 	}
+
+	@Override
+	public String toString() {
+		return "[" + incompatibility + "," + requirement + "]";
+	}
+	
+	
 
 	
 	
