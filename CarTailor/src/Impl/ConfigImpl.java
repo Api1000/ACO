@@ -31,10 +31,14 @@ public class ConfigImpl implements Configuration{
 	
 	
 	
-
-	public boolean addPart(PartName pn) {
+public boolean addPart(PartName pn) {
 		Catalogue c = new Catalogue();
 		PartImpl p = new PartImpl();
+		for(PartImpl pi : this.myConfig) {
+			if(pi.name.toString().equals(pn.partName.toString())) {
+				return false;
+			}
+		}
 		for(int i=0;i < c.catalogue.length; i++) {
 			if(pn.partName.toString().equals(c.catalogue[i][1])) {
 				//System.out.println("coucou");
@@ -46,8 +50,21 @@ public class ConfigImpl implements Configuration{
 		return false;
 	}
 
+	public boolean removePart(PartName pn) {
+		Catalogue c = new Catalogue();
+		for(int i=0; i<c.catalogue.length; i++) {
+			if(!pn.partName.toString().equals(c.catalogue[i][1])) {
+				return false;
+			}
+			else {
+				myConfig.remove(i);
+			}
+		}
+		return true;
+	}
 
-	
+
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -55,25 +72,20 @@ public class ConfigImpl implements Configuration{
 	 * @generated
 	 * @ordered
 	 */
-	
-	
+
+
 	public void showConfiguration() {
-		ConfigImpl config = new ConfigImpl();
-		config.getConfiguration();
-		System.out.println(config);
-	}
-	
-	
-	public void showlistpartcategories() { //affiche les categories de MyPart
-		
+		for(PartImpl p : myConfig) {
+			System.out.print(p.category +" "+ p.name+ " " + p.description+ " " + p.im + "\n");
+		}
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
+
+	public void showPartCategories() { //affiche les categories de MyPart
+		for(PartImpl p: myConfig) {
+			System.out.print(p.category + "\n");
+		}
+	}
 	
 	public void selectcategory() {
 		// TODO implement me
