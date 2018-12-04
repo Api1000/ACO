@@ -58,12 +58,17 @@ public class ConfigImpl implements Configuration{
 	}
 
 	
-
-	public boolean addPart(PartName pn) {
+public boolean addPart(PartName pn) {
 		Catalogue c = new Catalogue();
+<<<<<<< HEAD
 		Part p = new PartImpl();
 		for(Part pi : this.myConfig) {
 			if(pi.getName().toString().equals(pn.partName.toString())) {
+=======
+		PartImpl p = new PartImpl();
+		for(PartImpl pi : this.myConfig) {
+			if(pi.name.toString().equals(pn.partName.toString())) {
+>>>>>>> branch 'master' of https://github.com/Api1000/ACO
 				return false;
 			}
 		}
@@ -89,8 +94,17 @@ public class ConfigImpl implements Configuration{
 			}
 		}
 		return true;
+<<<<<<< HEAD
 }
+=======
+	}
+>>>>>>> branch 'master' of https://github.com/Api1000/ACO
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> branch 'master' of https://github.com/Api1000/ACO
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -98,9 +112,10 @@ public class ConfigImpl implements Configuration{
 	 * @gEngineerated
 	 * @ordered
 	 */
-	
-	
+
+
 	public void showConfiguration() {
+<<<<<<< HEAD
 		ConfigImpl config = new ConfigImpl();
 		config.getConfiguration();
 		System.out.println(config);
@@ -154,15 +169,19 @@ public class ConfigImpl implements Configuration{
 				}
 			}
 			return iscompatible();
+=======
+		for(PartImpl p : myConfig) {
+			System.out.print(p.category +" "+ p.name+ " " + p.description+ " " + p.im + "\n");
+>>>>>>> branch 'master' of https://github.com/Api1000/ACO
 		}
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
+
+	public void showPartCategories() { //affiche les categories de MyPart
+		for(PartImpl p: myConfig) {
+			System.out.print(p.category + "\n");
+		}
+	}
 	
 	public boolean iscompatible() {
 		ArrayList<Part> config = this.myConfig;
