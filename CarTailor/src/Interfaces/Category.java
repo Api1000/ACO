@@ -1,5 +1,7 @@
 package Interfaces;
 
+import java.util.ArrayList;
+
 public interface Category {
 
 	/**
@@ -16,7 +18,7 @@ public interface Category {
 		 * @ordered
 		 */
 		
-		public boolean addCategory(String category); 
+		public boolean addCategory(PartType partCategory); 
 
 		/**
 		 * <!-- begin-user-doc -->
@@ -25,10 +27,12 @@ public interface Category {
 		 * @ordered
 		 */
 		
-		public boolean removeCategory(String category); 
+		public boolean removeCategory(PartType partCategory); 
 		
 
 		public String getCategory();
+		
+		public ArrayList<PartType> getPartImpl();
 	}
 
 

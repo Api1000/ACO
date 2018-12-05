@@ -5,70 +5,76 @@ import java.util.ArrayList;
 import Interfaces.IncompatibilityManager;
 import model.Catalogue;
 import model.PartName;
-import Interfaces.Part;
+import Interfaces.PartType;
 
 public class IncompatibilityManagerImpl implements IncompatibilityManager {
-	public ArrayList<Part> incompatibility;
-	public ArrayList<Part> requirement;
-	
+	public ArrayList<PartType> incompatibility;
+	public ArrayList<PartType> requirement;
+
 	public IncompatibilityManagerImpl() {
-		this.incompatibility = new ArrayList<Part>();
-		this.requirement = new ArrayList<Part>();
+		this.incompatibility = new ArrayList<PartType>();
+		this.requirement = new ArrayList<PartType>();
 	}
-	
-	public IncompatibilityManagerImpl(ArrayList<Part> incompatibility, ArrayList<Part> requirement) {
+
+	public IncompatibilityManagerImpl(ArrayList<PartType> incompatibility, ArrayList<PartType> requirement) {
 		this.incompatibility = incompatibility;
 		this.requirement = requirement;
 	}
-	
-	
-	public ArrayList<Part> getIncompatibilities() {
+
+	public ArrayList<PartType> getIncompatibilities() {
 		return this.incompatibility;
 	}
-	
-	public ArrayList<Part> getRequirements(){
+
+	public ArrayList<PartType> getRequirements() {
 		return this.requirement;
 	}
-	
-	public boolean addRequirement(ArrayList<Part> requirement) {
-		Catalogue catalogue = new Catalogue();
-		for(Part p : requirement) {
-			for(int i=0; i<catalogue.catalogue.length;i++) {
-				if(p.getName().equals(catalogue.catalogue[i][1])) {
-					Part pn = new Part(catalogue.catalogue[i][1]);
-					this.requirement.add(pn);
-					return true;
-				}
+
+	public boolean addRequirement(ArrayList<PartType> requirement) {
+		for (PartType partype : requirement) {
+			if (!this.requirement.contains(partype)) {
+				this.requirement.add(partype);
 			}
 		}
-		return false;
+		return true;
 	}
-	
-	
-	public boolean addIncompatibility(ArrayList<Part> incompatibility) {
-		Catalogue catalogue = new Catalogue();
-		for(Part p : incompatibility) {
-			for(int i=0; i<catalogue.catalogue.length;i++) {
-				if(p.getName().equals(catalogue.catalogue[i][1])) {
-					PartName pn = new PartName(catalogue.catalogue[i][1]);
-					this.incompatibility.add(pn);
-					return true;
-				}
+
+	public boolean removeRequirement(ArrayList<PartType> requirement) {
+		for (PartType partype : requirement) {
+			if (this.requirement.contains(partype)) {
+				this.requirement.remove(partype);
 			}
 		}
-		return false;
+		return true;
 	}
+
+	public boolean addIncompatibility(ArrayList<PartType> incompatibility) {
+		for (PartType partype : incompatibility) {
+			if (!this.incompatibility.contains(partype)) {
+				this.requirement.add(partype);
+			}
+		}
+		return true;
+	}
+
+	public boolean removeIncompatibility(ArrayList<PartType> incompatibility) {
+		for (PartType partype : incompatibility) {
+			if (this.incompatibility.contains(partype)) {
+				this.incompatibility.remove(partype);
+			}
+		}
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
 
 	@Override
 	public String toString() {
 		return "[" + incompatibility + "," + requirement + "]";
 	}
-	
-	
-
-	
-	
-	
-	
 
 }

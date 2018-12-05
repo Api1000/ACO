@@ -29,11 +29,11 @@ public interface Configuration
 	 * @ordered
 	 */
 	
-<<<<<<< HEAD
+
 	public Set<Category> showlistpartcategories() ;
-=======
+
 	public void showPartCategories();
->>>>>>> branch 'master' of https://github.com/Api1000/ACO
+
 
 	/**
 	 * <!-- begin-user-doc -->

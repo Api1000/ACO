@@ -13,20 +13,6 @@ import model.PartName;
 
 public interface Part {
 
-	public CategoryImpl getCategory();
 
-	public void setCategory(CategoryImpl category);
-
-	public PartName getName();
-
-	public void setName(PartName name);
-
-	public PartDescription getDescription();
-
-	public void setDescription(PartDescription description);
-
-	public IncompatibilityManagerImpl getIm();
-
-	public void setIm(IncompatibilityManagerImpl im);
 
 }

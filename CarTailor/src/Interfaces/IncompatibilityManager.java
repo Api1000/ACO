@@ -4,14 +4,19 @@ import java.util.ArrayList;
 
 import model.Catalogue;
 import model.PartName;
+import Interfaces.PartType;
 
 public interface IncompatibilityManager {
 
-	public ArrayList<Part> getIncompatibilities();
+	public ArrayList<PartType> getIncompatibilities();
 	
-	public ArrayList<Part> getRequirements();
+	public ArrayList<PartType> getRequirements();
 	
-	public boolean addRequirement(ArrayList<Part> requirement);
+	public boolean addRequirement(ArrayList<PartType> requirement);
 	
-	public boolean addIncompatibility(ArrayList<Part> incompatibility);
+	public boolean removeRequirement(ArrayList<PartType> requirement);
+	
+	public boolean addIncompatibility(ArrayList<PartType> incompatibility);
+	
+	public boolean removeIncompatibility(ArrayList<PartType> incompatibility);
 }

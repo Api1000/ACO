@@ -1,15 +1,18 @@
 package Impl;
 
 import Interfaces.Part;
+import Interfaces.PartType;
 import model.PartDescription;
 import model.PartName;
+import Interfaces.IncompatibilityManager;
+import Interfaces.Category;
 
-public class PartImpl implements Part{
+public class PartImpl implements PartType{
 	
-	public CategoryImpl category;
+	public Category category;
 	public PartName name;
 	public PartDescription description;
-	public IncompatibilityManagerImpl im;
+	public IncompatibilityManager im;
 	
 	public PartImpl() {
 		this.category = new CategoryImpl();
@@ -35,11 +38,11 @@ public class PartImpl implements Part{
 
 	
 	
-	public CategoryImpl getCategory() {
+	public Category getCategory() {
 		return category;
 	}
 
-	public void setCategory(CategoryImpl category) {
+	public void setCategory(Category category) {
 		this.category = category;
 	}
 
@@ -59,11 +62,11 @@ public class PartImpl implements Part{
 		this.description = description;
 	}
 
-	public IncompatibilityManagerImpl getIm() {
+	public IncompatibilityManager getIm() {
 		return im;
 	}
 
-	public void setIm(IncompatibilityManagerImpl im) {
+	public void setIm(IncompatibilityManager im) {
 		this.im = im;
 	}
 
