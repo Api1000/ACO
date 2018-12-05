@@ -86,7 +86,7 @@ public class ConfigImpl implements Configuration {
 	public boolean isCompatible() {
 		ArrayList<PartType> set = this.myConfig;
 		for (PartType myPart : set) {
-			IncompatibilityManager myIncompat = myPart.getIncompatibilitiesManager();
+			IncompatibilityManager myIncompat = myPart.getIm();
 			if (myIncompat.getIncompatibilities() != null) {
 				for (PartType incompatPart : myIncompat.getIncompatibilities()) {
 					if (set.contains(incompatPart))
