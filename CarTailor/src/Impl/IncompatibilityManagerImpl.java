@@ -30,6 +30,9 @@ public class IncompatibilityManagerImpl implements IncompatibilityManager {
 	}
 
 	public boolean addRequirement(ArrayList<PartType> requirement) {
+		if (!requirement.equals(this.requirement)) {
+			throw new IllegalArgumentException("This part already contains all this requirements");
+		}
 		for (PartType partype : requirement) {
 			if (!this.requirement.contains(partype)) {
 				this.requirement.add(partype);
@@ -48,6 +51,9 @@ public class IncompatibilityManagerImpl implements IncompatibilityManager {
 	}
 
 	public boolean addIncompatibility(ArrayList<PartType> incompatibility) {
+		if (!incompatibility.equals(this.incompatibility)) {
+			throw new IllegalArgumentException("This part already contains all this incompatibilities");
+		}
 		for (PartType partype : incompatibility) {
 			if (!this.incompatibility.contains(partype)) {
 				this.requirement.add(partype);
@@ -64,8 +70,6 @@ public class IncompatibilityManagerImpl implements IncompatibilityManager {
 		}
 		return true;
 	}
-
-	
 
 	@Override
 	public String toString() {
