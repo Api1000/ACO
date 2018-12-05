@@ -1,6 +1,6 @@
 package Interfaces;
 
-import java.util.ArrayList;
+import java.util.Set;
 import java.util.Map;
 
 import Impl.PartImpl;
@@ -20,21 +20,21 @@ public interface Configuration
 
 	public boolean RemovePart(PartType p);
 	
-	public ArrayList<PartType> SelectCategory(Category c) ;
+	public Set<PartType> SelectCategory(Category c) ;
 
 
-	public ArrayList<PartType> ShowListofParts();
+	public Set<PartType> ShowListofParts();
 	
 	
 	public boolean isCompatible();
 
-
+	public Set<PartType> getMyConfig();
 
 
 	public boolean isValide() ;
 
 	
-	public ArrayList<Category> ShowListCategory();
+	public Set<Category> ShowListCategory();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -44,7 +44,7 @@ public interface Configuration
 	 */	
 	public String toString() ;
 	
-	public  Map<Category,ArrayList<PartType>> getCatalogue();
+	public  Map<Category,Set<PartType>> getCatalogue();
 
 }
 

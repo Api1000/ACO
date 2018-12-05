@@ -1,6 +1,6 @@
 package Interfaces;
 
-import java.util.ArrayList;
+import java.util.Set;
 
 public interface Category {
 
@@ -32,7 +32,7 @@ public interface Category {
 
 		public String getCategory();
 		
-		public ArrayList<PartType> getPartImpl();
+		public Set<PartType> getPartImpl();
 	}
 
 

@@ -1,6 +1,7 @@
 package Impl;
 
-import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 import Interfaces.IncompatibilityManager;
 import model.Catalogue;
@@ -8,28 +9,28 @@ import model.PartName;
 import Interfaces.PartType;
 
 public class IncompatibilityManagerImpl implements IncompatibilityManager {
-	public ArrayList<PartType> incompatibility;
-	public ArrayList<PartType> requirement;
+	public Set<PartType> incompatibility;
+	public Set<PartType> requirement;
 
 	public IncompatibilityManagerImpl() {
-		this.incompatibility = new ArrayList<PartType>();
-		this.requirement = new ArrayList<PartType>();
+		this.incompatibility = new HashSet<PartType>();
+		this.requirement = new HashSet<PartType>();
 	}
 
-	public IncompatibilityManagerImpl(ArrayList<PartType> incompatibility, ArrayList<PartType> requirement) {
+	public IncompatibilityManagerImpl(Set<PartType> incompatibility, Set<PartType> requirement) {
 		this.incompatibility = incompatibility;
 		this.requirement = requirement;
 	}
 
-	public ArrayList<PartType> getIncompatibilities() {
+	public Set<PartType> getIncompatibilities() {
 		return this.incompatibility;
 	}
 
-	public ArrayList<PartType> getRequirements() {
+	public Set<PartType> getRequirements() {
 		return this.requirement;
 	}
 
-	public boolean addRequirement(ArrayList<PartType> requirement) {
+	public boolean addRequirement(Set<PartType> requirement) {
 		if (!requirement.equals(this.requirement)) {
 			throw new IllegalArgumentException("This part already contains all this requirements");
 		}
@@ -41,7 +42,7 @@ public class IncompatibilityManagerImpl implements IncompatibilityManager {
 		return true;
 	}
 
-	public boolean removeRequirement(ArrayList<PartType> requirement) {
+	public boolean removeRequirement(Set<PartType> requirement) {
 		for (PartType partype : requirement) {
 			if (this.requirement.contains(partype)) {
 				this.requirement.remove(partype);
@@ -50,7 +51,7 @@ public class IncompatibilityManagerImpl implements IncompatibilityManager {
 		return true;
 	}
 
-	public boolean addIncompatibility(ArrayList<PartType> incompatibility) {
+	public boolean addIncompatibility(Set<PartType> incompatibility) {
 		if (!incompatibility.equals(this.incompatibility)) {
 			throw new IllegalArgumentException("This part already contains all this incompatibilities");
 		}
@@ -62,7 +63,7 @@ public class IncompatibilityManagerImpl implements IncompatibilityManager {
 		return true;
 	}
 
-	public boolean removeIncompatibility(ArrayList<PartType> incompatibility) {
+	public boolean removeIncompatibility(Set<PartType> incompatibility) {
 		for (PartType partype : incompatibility) {
 			if (this.incompatibility.contains(partype)) {
 				this.incompatibility.remove(partype);

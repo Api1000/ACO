@@ -1,6 +1,6 @@
 package Interfaces;
 
-import java.util.ArrayList;
+import java.util.Set;
 
 import model.Catalogue;
 import model.PartName;
@@ -8,15 +8,15 @@ import Interfaces.PartType;
 
 public interface IncompatibilityManager {
 
-	public ArrayList<PartType> getIncompatibilities();
+	public Set<PartType> getIncompatibilities();
 	
-	public ArrayList<PartType> getRequirements();
+	public Set<PartType> getRequirements();
 	
-	public boolean addRequirement(ArrayList<PartType> requirement);
+	public boolean addRequirement(Set<PartType> requirement);
 	
-	public boolean removeRequirement(ArrayList<PartType> requirement);
+	public boolean removeRequirement(Set<PartType> requirement);
 	
-	public boolean addIncompatibility(ArrayList<PartType> incompatibility);
+	public boolean addIncompatibility(Set<PartType> incompatibility);
 	
-	public boolean removeIncompatibility(ArrayList<PartType> incompatibility);
+	public boolean removeIncompatibility(Set<PartType> incompatibility);
 }

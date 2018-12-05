@@ -1,5 +1,5 @@
 package Impl;
-import java.util.ArrayList;
+import java.util.Set;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -15,7 +15,7 @@ import Interfaces.PartType;
 public class CategoryImpl implements Category {
 	
 	public String category;
-	public ArrayList<PartType> partImpl;
+	public Set<PartType> partImpl;
 
 
 	public CategoryImpl(){
@@ -25,10 +25,10 @@ public class CategoryImpl implements Category {
 
 	public CategoryImpl(String category) {
 		this.category = category;
-		this.partImpl = new ArrayList<PartType>();
+		this.partImpl = new HashSet<PartType>();
 	}
 	
-	public CategoryImpl(String category,  ArrayList<PartType> partImpl) {
+	public CategoryImpl(String category,  Set<PartType> partImpl) {
 		// TODO Auto-generated constructor stub
 		this.category = category;
 		this.partImpl = partImpl;
@@ -69,7 +69,7 @@ public class CategoryImpl implements Category {
 
 	
 
-	public ArrayList<PartType> getPartImpl() {
+	public Set<PartType> getPartImpl() {
 		return this.partImpl;
 	}
 

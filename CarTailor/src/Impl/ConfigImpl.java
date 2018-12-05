@@ -1,6 +1,6 @@
 package Impl;
 
-import java.util.ArrayList;
+import java.util.Set;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -15,24 +15,24 @@ import model.PartName;
 
 public class ConfigImpl implements Configuration {
 
-	public ArrayList<PartType> myConfig;
-	public Map<Category, ArrayList<PartType>> catalogue = new HashMap<Category, ArrayList<PartType>>();
+	public Set<PartType> myConfig;
+	public Map<Category, Set<PartType>> catalogue = new HashMap<Category, Set<PartType>>();
 
 	public ConfigImpl() {
-		this.myConfig = new ArrayList<PartType>();
+		this.myConfig = new HashSet<PartType>();
 	}
 
-	public ConfigImpl(ArrayList<PartType> myConfig) {
+	public ConfigImpl(Set<PartType> myConfig) {
 		this.myConfig = myConfig;
-		this.catalogue = new HashMap<Category, ArrayList<PartType>>();
+		this.catalogue = new HashMap<Category, Set<PartType>>();
 	}
 
-	public ConfigImpl(Map<Category, ArrayList<PartType>> myConfig) {
+	public ConfigImpl(Map<Category, Set<PartType>> myConfig) {
 		this.catalogue = catalogue;
-		this.myConfig = new ArrayList<PartType>();
+		this.myConfig = new HashSet<PartType>();
 	}
 
-	public ConfigImpl(ArrayList<PartType> myConfig, Map<Category, ArrayList<PartType>> catalogue) {
+	public ConfigImpl(Set<PartType> myConfig, Map<Category, Set<PartType>> catalogue) {
 		this.catalogue = catalogue;
 		this.myConfig = myConfig;
 	}
@@ -43,7 +43,7 @@ public class ConfigImpl implements Configuration {
 				return false;
 			}
 		}
-		for (ArrayList<PartType> setPT : catalogue.values()) {
+		for (Set<PartType> setPT : catalogue.values()) {
 			if (setPT.contains(p)) {
 				PartType toAdd = p;
 				this.myConfig.add(toAdd);
@@ -63,7 +63,7 @@ public class ConfigImpl implements Configuration {
 		return false;
 	}
 
-	public ArrayList<PartType> SelectCategory(Category c) { // a tester
+	public Set<PartType> SelectCategory(Category c) { // a tester
 		if (!catalogue.containsKey(c)) {
 			throw new IllegalArgumentException("This category does not exist.");
 		} else {
@@ -71,12 +71,12 @@ public class ConfigImpl implements Configuration {
 		}
 	}
 
-	public ArrayList<PartType> ShowListofParts() {
+	public Set<PartType> ShowListofParts() {
 		if (catalogue.size() <= 0) {
 			throw new IllegalArgumentException("There is no part in this config.");
 		}
-		ArrayList<PartType> setPart = new ArrayList<PartType>();
-		for (ArrayList<PartType> sp : catalogue.values()) {
+		Set<PartType> setPart = new HashSet<PartType>();;
+		for (Set<PartType> sp : catalogue.values()) {
 			for (PartType part : sp)
 				setPart.add(part);
 		}
@@ -84,7 +84,7 @@ public class ConfigImpl implements Configuration {
 	}
 
 	public boolean isCompatible() {
-		ArrayList<PartType> set = this.myConfig;
+		Set<PartType> set = this.myConfig;
 		for (PartType myPart : set) {
 			IncompatibilityManager myIncompat = myPart.getIm();
 			if (myIncompat.getIncompatibilities() != null) {
@@ -138,16 +138,16 @@ public class ConfigImpl implements Configuration {
 		}
 	}
 
-	public ArrayList<Category> ShowListCategory() {
-		ArrayList<Category> keys = new ArrayList<Category>(catalogue.keySet());
+	public Set<Category> ShowListCategory() {
+		Set<Category> keys = new HashSet<Category>(catalogue.keySet());
 		return keys;
 	}
 
-	public ArrayList<PartType> getMyConfig() {
+	public Set<PartType> getMyConfig() {
 		return this.myConfig;
 	}
 
-	public ArrayList<PartType> ShowListPartFromCategory(Category c) {
+	public Set<PartType> ShowListPartFromCategory(Category c) {
 		if (catalogue.containsKey(c)) {
 			throw new IllegalArgumentException("This category does not exist.");
 		}
@@ -169,7 +169,7 @@ public class ConfigImpl implements Configuration {
 	}
 
 	@Override
-	public Map<Category, ArrayList<PartType>> getCatalogue() {
+	public Map<Category, Set<PartType>> getCatalogue() {
 		return this.catalogue;
 	}
 
