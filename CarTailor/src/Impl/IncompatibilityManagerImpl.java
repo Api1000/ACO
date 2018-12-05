@@ -65,16 +65,11 @@ public class IncompatibilityManagerImpl implements IncompatibilityManager {
 		return true;
 	}
 
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
+	
 
 	@Override
 	public String toString() {
-		return "[" + incompatibility + "," + requirement + "]";
+		return "Incompatiblity = [" + incompatibility + "], Requirement = [" + requirement + "]";
 	}
 
 }

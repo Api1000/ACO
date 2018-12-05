@@ -5,78 +5,46 @@ import Interfaces.PartType;
 import model.PartDescription;
 import model.PartName;
 import Interfaces.IncompatibilityManager;
+
+import java.util.Set;
+
 import Interfaces.Category;
 
-public class PartImpl implements PartType{
+public class PartImpl implements Part{
+	
 	
 	public Category category;
 	public PartName name;
 	public PartDescription description;
-	public IncompatibilityManager im;
-	
+	public IncompatibilityManagerImpl ir;
+
+	public Set<Part> partType;
+
+	public String Tab;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	public PartImpl() {
-		this.category = new CategoryImpl();
-		this.name = new PartName();
-		this.description = new PartDescription();
-		this.im = new IncompatibilityManagerImpl();
+		super();
 	}
-	
-	public PartImpl(CategoryImpl category,PartName name,PartDescription description) {
-		this.category = category;
+
+	public PartImpl(PartName name, PartDescription description, Category category, IncompatibilityManagerImpl ir) {
 		this.name = name;
 		this.description = description;
-	}
-
-
-	
-	public PartImpl(CategoryImpl category,PartName name,PartDescription description,IncompatibilityManagerImpl im) {
 		this.category = category;
-		this.name = name;
-		this.description = description;
-		this.im = im;
+		this.ir = ir;
 	}
 
-	
-	
-	public Category getCategory() {
-		return category;
-	}
-
-	public void setCategory(Category category) {
-		this.category = category;
-	}
-
-	public PartName getName() {
-		return name;
-	}
-
-	public void setName(PartName name) {
-		this.name = name;
-	}
-
-	public PartDescription getDescription() {
-		return description;
-	}
-
-	public void setDescription(PartDescription description) {
-		this.description = description;
-	}
-
-	public IncompatibilityManager getIm() {
-		return im;
-	}
-
-	public void setIm(IncompatibilityManager im) {
-		this.im = im;
-	}
-
-	@Override
-	public String toString() {
-		return "category=" + category + ", name=" + name + ", description=" + description + ", im=" + im
-				;
-	}
-	
-	
 
 
 }
