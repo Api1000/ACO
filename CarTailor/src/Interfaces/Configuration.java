@@ -1,9 +1,8 @@
 package Interfaces;
 
 import java.util.ArrayList;
-import java.util.Set;
+import java.util.Map;
 
-import Impl.CategoryImpl;
 import Impl.PartImpl;
 import model.PartName;
 
@@ -16,58 +15,36 @@ import model.PartName;
 public interface Configuration 
 {
 	
+	public boolean AddPart(PartType p);
 
-	public boolean addPart(PartName pn);
 
+	public boolean RemovePart(PartType p);
+	
+	public ArrayList<PartType> SelectCategory(Category c) ;
+
+
+	public ArrayList<PartType> ShowListofParts();
 	
 	
-	public ArrayList<Part> getConfiguration() ;
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
+	public boolean isCompatible();
+
+
+
+
+	public boolean isValide() ;
+
 	
-
-	public Set<Category> showlistpartcategories() ;
-
-	public void showPartCategories();
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	
-	public void selectcategory() ;
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	
-	public void selectpartcategory();
+	public ArrayList<Category> ShowListCategory();
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!--  end-user-doc  -->
 	 * @generated
 	 * @ordered
-	 */
+	 */	
+	public String toString() ;
 	
-	public boolean isvalidconfiguration() ;
+	public  Map<Category,ArrayList<PartType>> getCatalogue();
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	
-	public boolean iscompatible();
 }
 
