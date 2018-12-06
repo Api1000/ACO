@@ -28,7 +28,7 @@ public interface Configuration
 	
 	public boolean isCompatible();
 
-	public Set<PartType> getMyConfig();
+	public Set<PartType> getParts();
 
 
 	public boolean isValide() ;

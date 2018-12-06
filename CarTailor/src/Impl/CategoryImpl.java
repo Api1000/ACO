@@ -78,7 +78,7 @@ public class CategoryImpl implements Category {
 
 	@Override
 	public String toString() {
-		return  "[" + category + "]" ;
+		return  "\n" + category;
 	}
 
 

@@ -17,7 +17,7 @@ public class PartName {
 
 	@Override
 	public String toString() {
-		return "["+ partName + "]" ;
+		return partName;
 	}
 	
 	

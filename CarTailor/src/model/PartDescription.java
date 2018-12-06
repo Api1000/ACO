@@ -17,7 +17,7 @@ public class PartDescription {
 
 	@Override
 	public String toString() {
-		return  "[" + description + "]";
+		return  description;
 	}
 	
 	

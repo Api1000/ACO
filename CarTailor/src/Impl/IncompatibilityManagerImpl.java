@@ -74,7 +74,7 @@ public class IncompatibilityManagerImpl implements IncompatibilityManager {
 
 	@Override
 	public String toString() {
-		return "Incompatiblity = [" + incompatibility + "], Requirement = [" + requirement + "]";
+		return "Incompatiblity =" + incompatibility + ", Requirement =" + requirement;
 	}
 
 }

@@ -15,38 +15,39 @@ import model.PartName;
 
 public class ConfigImpl implements Configuration {
 
-	public Set<PartType> myConfig;
+	public Set<PartType> Parts;
 	public Map<Category, Set<PartType>> catalogue = new HashMap<Category, Set<PartType>>();
 
 	public ConfigImpl() {
-		this.myConfig = new HashSet<PartType>();
-	}
-
-	public ConfigImpl(Set<PartType> myConfig) {
-		this.myConfig = myConfig;
+		//this.Parts = new HashSet<PartType>();
 		this.catalogue = new HashMap<Category, Set<PartType>>();
 	}
 
-	public ConfigImpl(Map<Category, Set<PartType>> myConfig) {
-		this.catalogue = catalogue;
-		this.myConfig = new HashSet<PartType>();
+	public ConfigImpl(Set<PartType> Parts) {
+		this.Parts = Parts;
+		this.catalogue = new HashMap<Category, Set<PartType>>();
 	}
 
-	public ConfigImpl(Set<PartType> myConfig, Map<Category, Set<PartType>> catalogue) {
+	public ConfigImpl(Map<Category, Set<PartType>> Parts) {
 		this.catalogue = catalogue;
-		this.myConfig = myConfig;
+		this.Parts = new HashSet<PartType>();
+	}
+
+	public ConfigImpl(Set<PartType> Parts, Map<Category, Set<PartType>> catalogue) {
+		this.catalogue = catalogue;
+		this.Parts = Parts;
 	}
 
 	public boolean AddPart(PartType p) {
-		for (PartType part : this.myConfig) {
+		for (PartType part : this.Parts) {
 			if (part.getName().partName.equals(p.getName().partName)) {
 				return false;
 			}
 		}
 		for (Set<PartType> setPT : catalogue.values()) {
 			if (setPT.contains(p)) {
-				PartType toAdd = p;
-				this.myConfig.add(toAdd);
+				//PartType toAdd = p;
+				this.Parts.add(p);
 				return true;
 			}
 		}
@@ -54,9 +55,9 @@ public class ConfigImpl implements Configuration {
 	}
 
 	public boolean RemovePart(PartType p) {
-		for (PartType part : this.myConfig) {
+		for (PartType part : this.Parts) {
 			if (part.getName().partName.equals(p.getName().partName)) {
-				this.myConfig.remove(part);
+				this.Parts.remove(part);
 				return true;
 			}
 		}
@@ -84,7 +85,7 @@ public class ConfigImpl implements Configuration {
 	}
 
 	public boolean isCompatible() {
-		Set<PartType> set = this.myConfig;
+		Set<PartType> set = this.Parts;
 		for (PartType myPart : set) {
 			IncompatibilityManager myIncompat = myPart.getIm();
 			if (myIncompat.getIncompatibilities() != null) {
@@ -103,11 +104,11 @@ public class ConfigImpl implements Configuration {
 	}
 
 	public boolean isValide() {
-		if (this.myConfig.size() != 4) {
+		if (this.Parts.size() != 4) {
 			return false;
 		} else {
 			Boolean[] tabOfCategories = new Boolean[4];
-			for (PartType myPart : this.myConfig) {
+			for (PartType myPart : this.Parts) {
 				Category category = myPart.getCategory();
 				if (category.getCategory() == "engine") {
 					if (tabOfCategories[0] == true) {
@@ -143,8 +144,8 @@ public class ConfigImpl implements Configuration {
 		return keys;
 	}
 
-	public Set<PartType> getMyConfig() {
-		return this.myConfig;
+	public Set<PartType> getParts() {
+		return this.Parts;
 	}
 
 	public Set<PartType> ShowListPartFromCategory(Category c) {
@@ -162,12 +163,13 @@ public class ConfigImpl implements Configuration {
 	 */
 	public String toString() {
 		String result = "My configuration is :\n";
-		for (PartType part : this.myConfig) {
+		for (PartType part : this.Parts) {
 			result += part.toString() + "\n";
 		}
 		return result;
 	}
 
+	
 	@Override
 	public Map<Category, Set<PartType>> getCatalogue() {
 		return this.catalogue;

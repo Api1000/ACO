@@ -31,19 +31,18 @@ public class PartTypeImpl implements PartType {
 		this.im = new IncompatibilityManagerImpl();
 	}
 
-	public PartTypeImpl(CategoryImpl category, PartName name, PartDescription description) {
-		this.category = category;
+	public PartTypeImpl(PartName name, PartDescription description) {
+		//this.category = category;
 		this.name = name;
 		this.description = description;
 	}
 
-	public PartTypeImpl(CategoryImpl category, PartName name, PartDescription description,
-			IncompatibilityManagerImpl im) {
+	/*public PartTypeImpl(PartName name, PartDescription description, IncompatibilityManagerImpl im) {
 		this.category = category;
 		this.name = name;
 		this.description = description;
 		this.im = im;
-	}
+	}*/
 
 	public Category getCategory() {
 		return category;
@@ -79,7 +78,7 @@ public class PartTypeImpl implements PartType {
 
 	@Override
 	public String toString() {
-		return "category=" + category + ", name=" + name + ", description=" + description + ", im=" + im;
+		return name + " | " + description + " | " + im;
 	}
 
 }
