@@ -7,44 +7,21 @@ import Impl.PartImpl;
 import model.PartName;
 
 /**
- * <!-- begin-user-doc -->
- * <!--  end-user-doc  -->
+ * <!-- begin-user-doc --> <!-- end-user-doc -->
+ * 
  * @generated
  */
 
-public interface Configuration 
-{
-	
-	public boolean AddPart(PartType p);
+public interface Configuration {
 
+	public boolean AddPart(PartType parameter);
 
-	public boolean RemovePart(PartType p);
-	
-	public Set<PartType> SelectCategory(Category c) ;
+	public boolean RemovePart(PartType parameter);
 
+	public PartType ShowMyPartFromCategory(Category parameter);
 
-	public Set<PartType> ShowListofParts();
-	
-	
-	public boolean isCompatible();
+	public boolean isValide();
 
-	public Set<PartType> getParts();
-
-
-	public boolean isValide() ;
-
-	
-	public Set<Category> ShowListCategory();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */	
-	public String toString() ;
-	
-	public  Map<Category,Set<PartType>> getCatalogue();
+	public Map<Category, PartType> getcatalogue();
 
 }
-

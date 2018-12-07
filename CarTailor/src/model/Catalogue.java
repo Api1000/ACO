@@ -8,48 +8,64 @@ import java.util.Map;
 import java.util.Set;
 
 import Impl.CategoryImpl;
+import Impl.ConfigImpl;
 import Impl.IncompatibilityManagerImpl;
 import Impl.PartTypeImpl;
 import Interfaces.Category;
+import Interfaces.Configuration;
 import Interfaces.PartType;
 
 public class Catalogue {
 
+	public Configuration config = new ConfigImpl();
 	private Set<PartType> EngineParts = new HashSet<PartType>();
 	private Set<PartType> TransmissionParts = new HashSet<PartType>();
 	private Set<PartType> ExteriorParts = new HashSet<PartType>();
 	private Set<PartType> InteriorParts = new HashSet<PartType>();
 	private Map<Category, Set<PartType>> catalogue = new HashMap<Category, Set<PartType>>();
 
-	public Category Engine = new CategoryImpl("Engine");
-	public Category Transmission = new CategoryImpl("Transmission");
-	public Category Exterior = new CategoryImpl("Exterior");
-	public Category Interior = new CategoryImpl("Interior");
+	public Category Engine = new CategoryImpl("Engine", EngineParts);
+	public Category Transmission = new CategoryImpl("Transmission", TransmissionParts);
+	public Category Exterior = new CategoryImpl("Exterior", ExteriorParts);
+	public Category Interior = new CategoryImpl("Interior", InteriorParts);
 
-	public PartType partengine1 = new PartTypeImpl(new PartName("EG100"), new PartDescription("Gasoline, 100 kW"));
-	public PartType partengine2 = new PartTypeImpl(new PartName("EG133"), new PartDescription("Gasoline, 133 kW"));
-	public PartType partengine3 = new PartTypeImpl(new PartName("EG210"), new PartDescription("Gasoline, 210 kW"));
-	public PartType partengine4 = new PartTypeImpl(new PartName("ED110"), new PartDescription("Diesel, 110 kW"));
-	public PartType partengine5 = new PartTypeImpl(new PartName("ED180"), new PartDescription("Diesel, 180 kW"));
-	public PartType partengine6 = new PartTypeImpl(new PartName("EH120"),
-			new PartDescription("Gasoline/electric hybrid, 120 kW"));
-	public PartType parttrans1 = new PartTypeImpl(new PartName("TM5"), new PartDescription("Manual, 5 gears"));
-	public PartType parttrans2 = new PartTypeImpl(new PartName("TM6"), new PartDescription("Manual, 6 gears"));
-	public PartType parttrans3 = new PartTypeImpl(new PartName("TA5"), new PartDescription("Automatic, 5 gears"));
-	public PartType parttrans4 = new PartTypeImpl(new PartName("TS6"), new PartDescription("Sequential, 6 gears"));
-	public PartType parttrans5 = new PartTypeImpl(new PartName("TSF7"),
-			new PartDescription("Sequential, 7 gears, 4 wheels drive"));
-	public PartType parttrans6 = new PartTypeImpl(new PartName("TC120"), new PartDescription("Converter, 120 kW max"));
-	public PartType partext1 = new PartTypeImpl(new PartName("XC"), new PartDescription("Classic Paint"));
-	public PartType partext2 = new PartTypeImpl(new PartName("XM"), new PartDescription("Metallic Paint"));
-	public PartType partext3 = new PartTypeImpl(new PartName("XS"), new PartDescription("Red paint and sport decoration"));
-	public PartType partint1 = new PartTypeImpl(new PartName("IN"), new PartDescription("Standard interior"));
-	public PartType partint2 = new PartTypeImpl(new PartName("IH"), new PartDescription("High-end interior"));
-	public PartType partint3 = new PartTypeImpl(new PartName("IS"), new PartDescription("Sport finish"));
+	public PartType partengine1 = new PartTypeImpl(new CategoryImpl("Engine"), new PartName("EG100"), new PartDescription("Gasoline, 100 kW"));
+	public PartType partengine2 = new PartTypeImpl(new CategoryImpl("Engine"), new PartName("EG133"), new PartDescription("Gasoline, 133 kW"));
+	public PartType partengine3 = new PartTypeImpl(new CategoryImpl("Engine"), new PartName("EG210"), new PartDescription("Gasoline, 210 kW"));
+	public PartType partengine4 = new PartTypeImpl(new CategoryImpl("Engine"), new PartName("ED110"), new PartDescription("Diesel, 110 kW"));
+	public PartType partengine5 = new PartTypeImpl(new CategoryImpl("Engine"), new PartName("ED180"), new PartDescription("Diesel, 180 kW"));
+	public PartType partengine6 = new PartTypeImpl(new CategoryImpl("Engine"), new PartName("EH120"), new PartDescription("Gasoline/electric hybrid, 120 kW"));
+	public PartType parttrans1 = new PartTypeImpl(new CategoryImpl("Transmission"), new PartName("TM5"), new PartDescription("Manual, 5 gears"));
+	public PartType parttrans2 = new PartTypeImpl(new CategoryImpl("Transmission"), new PartName("TM6"), new PartDescription("Manual, 6 gears"));
+	public PartType parttrans3 = new PartTypeImpl(new CategoryImpl("Transmission"), new PartName("TA5"), new PartDescription("Automatic, 5 gears"));
+	public PartType parttrans4 = new PartTypeImpl(new CategoryImpl("Transmission"), new PartName("TS6"), new PartDescription("Sequential, 6 gears"));
+	public PartType parttrans5 = new PartTypeImpl(new CategoryImpl("Transmission"), new PartName("TSF7"), new PartDescription("Sequential, 7 gears, 4 wheels drive"));
+	public PartType parttrans6 = new PartTypeImpl(new CategoryImpl("Transmission"), new PartName("TC120"), new PartDescription("Converter, 120 kW max"));
+	public PartType partext1 = new PartTypeImpl(new CategoryImpl("Exterior"), new PartName("XC"), new PartDescription("Classic Paint"));
+	public PartType partext2 = new PartTypeImpl(new CategoryImpl("Exterior"), new PartName("XM"), new PartDescription("Metallic Paint"));
+	public PartType partext3 = new PartTypeImpl(new CategoryImpl("Exterior"), new PartName("XS"), new PartDescription("Red paint and sport decoration"));
+	public PartType partint1 = new PartTypeImpl(new CategoryImpl("Interior"), new PartName("IN"), new PartDescription("Standard interior"));
+	public PartType partint2 = new PartTypeImpl(new CategoryImpl("Interior"), new PartName("IH"), new PartDescription("High-end interior"));
+	public PartType partint3 = new PartTypeImpl(new CategoryImpl("Interior"), new PartName("IS"), new PartDescription("Sport finish"));
 
+	/*public void initcategory() {
+		catalogue.put(Engine, PartType);
+	}*/
+	
+	public void init() {
+		EngineParts.add(partengine1);
+		catalogue.put(Engine, EngineParts);
+		System.out.println(catalogue.toString());
+		config = new ConfigImpl(catalogue);
+		System.out.println(config.toString());
+    }
+		
+	
+	
 	public void initialize() {
 
 		EngineParts.add(partengine1);
+		//partengine1.addRequirement();
 		EngineParts.add(partengine2);
 		EngineParts.add(partengine3);
 		EngineParts.add(partengine4);

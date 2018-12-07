@@ -31,8 +31,12 @@ public class PartTypeImpl implements PartType {
 		this.im = new IncompatibilityManagerImpl();
 	}
 
+	public PartTypeImpl(Category category, PartName name, PartDescription description) {
+		this.category = category;
+		this.name = name;
+		this.description = description;
+	}
 	public PartTypeImpl(PartName name, PartDescription description) {
-		//this.category = category;
 		this.name = name;
 		this.description = description;
 	}
@@ -45,7 +49,7 @@ public class PartTypeImpl implements PartType {
 	}*/
 
 	public Category getCategory() {
-		return category;
+		return this.category;
 	}
 
 	public void setCategory(Category category) {

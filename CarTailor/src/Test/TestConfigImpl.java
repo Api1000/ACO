@@ -31,17 +31,17 @@ public class TestConfigImpl extends TestCase {
 	@Override
     protected void setUp() throws Exception
     {
-		partEngine.setCategory(new CategoryImpl("engine"));
-		partEngine.setName(new PartName("EG100"));
-		partEngine.setDescription(new PartDescription("LALALA"));
+		partEngine.SetCategory(new CategoryImpl("engine"));
+		partEngine.SetPartName(new PartName("EG100"));
+		partEngine.SetPartDescription(new PartDescription("LALALA"));
 		
-		partCantBeAdded.setCategory(new CategoryImpl("ERROR"));
-		partCantBeAdded.setName(new PartName("E404"));
-		partCantBeAdded.setDescription(new PartDescription("Page not found"));
+		partCantBeAdded.SetCategory(new CategoryImpl("ERROR"));
+		partCantBeAdded.SetPartName(new PartName("E404"));
+		partCantBeAdded.SetPartDescription(new PartDescription("Page not found"));
 			
-		partTransmission.setCategory(new CategoryImpl("transmision"));
-		partTransmission.setName(new PartName("TC100"));
-		partTransmission.setDescription(new PartDescription("LALALA"));
+		partTransmission.SetCategory(new CategoryImpl("transmision"));
+		partTransmission.SetPartName(new PartName("TC100"));
+		partTransmission.SetPartDescription(new PartDescription("LALALA"));
 		
 		setEngine.add(partEngine);
 		setTransmission.add(partTransmission);
@@ -73,10 +73,9 @@ public class TestConfigImpl extends TestCase {
 	@Test
 	public void testAddPart2() {
 		assertTrue(c.AddPart(partEngine));
-		System.out.println(c.toString());
 		/*assertEquals(c.toString(), "My configuration :\n" + "Category : engine , Name : EG100 , "
 				+ "Description : LALALA , Requirements :  , Incompatibilities : ");
-		for(PartType pt : c.getMyConfig())
+		for(PartType pt : c.getMyParts())
 		System.out.println(pt.toString());*/
 	}
 	
@@ -133,7 +132,7 @@ public class TestConfigImpl extends TestCase {
 	
 	@Test
 	public void testSelectCategory2() {
-		assertEquals(c.SelectCategory(cEngine),cEngine.getCategory());
+		assertEquals(c.SelectCategory(cEngine),cEngine.getCategoryPartType());
 	}
 	
 	/*
@@ -142,9 +141,9 @@ public class TestConfigImpl extends TestCase {
 	
 	@Test
 	public void testShowListPart1(){
-		Configuration c1 = new ConfigImpl();
+		Configuration c1 = new ConfigurationImpl();
 		try {
-			c1.ShowListofParts();
+			c1.ShowListPart();
 		}
 		catch (AssertionError e){
 			assertEquals("java.lang.AssertionError: There is no available part", e.toString());
@@ -163,7 +162,7 @@ public class TestConfigImpl extends TestCase {
 		toShow.add(partEngine);
 		toShow.add(partTransmission);
 		
-		assertEquals(c.ShowListofParts(),toShow);
+		assertEquals(c.ShowListPart(),toShow);
 		
 	}
 	
@@ -173,7 +172,7 @@ public class TestConfigImpl extends TestCase {
 	
 	@Test
 	public void testShowListCategory1(){
-		Configuration c1 = new ConfigImpl();
+		Configuration c1 = new ConfigurationImpl();
 		Set<Category> result = new HashSet<Category>();
 		assertEquals(result,c1.ShowListCategory());
 		
@@ -197,20 +196,20 @@ public class TestConfigImpl extends TestCase {
 	 */
 	
 
-	/*@Test
+	@Test
 	public void testShowListPartFromCategory1(){		
-		Set<PartType> toShow = new Set<PartType>();
+		Set<PartType> toShow = new HashSet<PartType>();
 		toShow.add(partEngine);	
 		assertEquals(c.ShowListPartFromCategory(cEngine),toShow);
 		
-	}*/
+	}
 	
 	/*
 	 * can't show a list of part from a category
 	 * if this category is not added in the available categories;
 	 */
 
-	/*@Test
+	@Test
 	public void testShowListPartFromCategory2(){
 		try {
 			c.ShowListPartFromCategory(cError);
@@ -218,7 +217,7 @@ public class TestConfigImpl extends TestCase {
 		catch (AssertionError e){
 			assertEquals("java.lang.AssertionError: This category does not exist", e.toString());
 		}
-	}*/
+	}
 	
 	
 	@Test
@@ -241,4 +240,5 @@ public class TestConfigImpl extends TestCase {
 		
 	}
 	
+
 }
