@@ -1,6 +1,7 @@
 package Interfaces;
 
 import java.util.Set;
+import java.util.Collection;
 import java.util.Map;
 
 import Impl.PartImpl;
@@ -20,8 +21,10 @@ public interface Configuration {
 
 	public PartType ShowMyPartFromCategory(Category parameter);
 
-	public boolean isValide();
+	public boolean isValid();
 
 	public Map<Category, PartType> getcatalogue();
+
+	public Collection<PartType> getMyParts();
 
 }

@@ -15,7 +15,7 @@ import model.PartDescription;
 import model.PartName;
 import Interfaces.Observable;
 
-public class ConfigImpl implements Configuration {
+public class ConfigImpl extends ObservableImpl<ConfigImpl> implements Configuration {
 
 	//public Set<PartType> Parts;
 	public Map<Category, PartType> catalogue = new HashMap<Category, PartType>();
@@ -27,13 +27,13 @@ public class ConfigImpl implements Configuration {
 		this.catalogue = new HashMap<Category, PartType>();
 	}
 
-	/*public ConfigImpl(Map<Category, PartType> catalogue) {
+	public ConfigImpl(Map<Category, PartType> catalogue) {
 		this.catalogue = catalogue;
-	}*/
-
-	public ConfigImpl(Map<Category, Set<PartType>> config) {
-		this.config = config;
 	}
+
+	/*public ConfigImpl(Map<Category, Set<PartType>> config) {
+		this.config = config;
+	}*/
 
 	public Map<Category, PartType> getcatalogue() {
 		return this.catalogue;
@@ -77,7 +77,7 @@ public class ConfigImpl implements Configuration {
 	 * @ordered
 	 */
 
-	public boolean isValide() {
+	public boolean isValid() {
 		if (this.catalogue.size() != 4) {
 			return false;
 		} else {
@@ -125,6 +125,7 @@ public class ConfigImpl implements Configuration {
 		Collection<PartType> res = new HashSet<PartType>();
 		res = catalogue.values();
 		return res;
+		
 	}
 
 	/**
@@ -153,6 +154,6 @@ public class ConfigImpl implements Configuration {
 
 	@Override
 	public String toString() {
-		return "MyConfig = \n " + config + "\n";
+		return "MyConfig = \n " + catalogue + "\n";
 	}
 }

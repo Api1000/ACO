@@ -15,15 +15,23 @@ import Interfaces.Category;
 import Interfaces.Configuration;
 import Interfaces.PartType;
 
+
+/**
+ * All PartTypes for the configuration of the car are available in this catalog
+ * If you want to test some methods, you have to pick up PartType here.
+ * In an interface, this catalog is expose to the customer. So, he will choose the configuration of his car
+ * @author Romiche
+ *
+ */
 public class Catalogue {
 
 	public Configuration config = new ConfigImpl();
-	private Set<PartType> EngineParts = new HashSet<PartType>();
-	private Set<PartType> TransmissionParts = new HashSet<PartType>();
-	private Set<PartType> ExteriorParts = new HashSet<PartType>();
-	private Set<PartType> InteriorParts = new HashSet<PartType>();
+	public Set<PartType> EngineParts = new HashSet<PartType>();
+	public Set<PartType> TransmissionParts = new HashSet<PartType>();
+	public Set<PartType> ExteriorParts = new HashSet<PartType>();
+	public Set<PartType> InteriorParts = new HashSet<PartType>();
 	private Map<Category, Set<PartType>> catalogue = new HashMap<Category, Set<PartType>>();
-
+			
 	public Category Engine = new CategoryImpl("Engine", EngineParts);
 	public Category Transmission = new CategoryImpl("Transmission", TransmissionParts);
 	public Category Exterior = new CategoryImpl("Exterior", ExteriorParts);
@@ -50,7 +58,7 @@ public class Catalogue {
 
 	/*public void initcategory() {
 		catalogue.put(Engine, PartType);
-	}*/
+	}
 	
 	public void init() {
 		EngineParts.add(partengine1);
@@ -58,10 +66,14 @@ public class Catalogue {
 		System.out.println(catalogue.toString());
 		config = new ConfigImpl(catalogue);
 		System.out.println(config.toString());
-    }
+    }*/
 		
 	
-	
+	/*
+	 * This method implement the initialization of the catalog in the configuration
+	 * It put all the PartType of the catalog in the config
+	 * Just serve to see all PartType 
+	 */
 	public void initialize() {
 
 		EngineParts.add(partengine1);

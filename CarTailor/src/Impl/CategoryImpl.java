@@ -29,7 +29,6 @@ public class CategoryImpl implements Category {
 	}
 	
 	public CategoryImpl(String category,  Set<PartType> partImpl) {
-		// TODO Auto-generated constructor stub
 		this.category = category;
 		this.partImpl = partImpl;
 	}
