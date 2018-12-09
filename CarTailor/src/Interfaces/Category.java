@@ -4,36 +4,11 @@ import java.util.Set;
 
 public interface Category {
 
-	/**
-		 * <!-- begin-user-doc -->
-		 * <!--  end-user-doc  -->
-		 * @generated
-		*/
+	public boolean addCategory(PartType partCategory);
 
+	public boolean removeCategory(PartType partCategory);
 
-		/**
-		 * <!-- begin-user-doc -->
-		 * <!--  end-user-doc  -->
-		 * @generated
-		 * @ordered
-		 */
-		
-		public boolean addCategory(PartType partCategory); 
+	public String getCategoryString();
 
-		/**
-		 * <!-- begin-user-doc -->
-		 * <!--  end-user-doc  -->
-		 * @generated
-		 * @ordered
-		 */
-		
-		public boolean removeCategory(PartType partCategory); 
-		
-
-		public String getCategoryString();
-		
-		public Set<PartType> getPartImpl();
-	}
-
-
-
+	public Set<PartType> getPartImpl();
+}

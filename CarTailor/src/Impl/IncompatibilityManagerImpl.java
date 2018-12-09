@@ -1,49 +1,41 @@
 package Impl;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Map;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-
 import Interfaces.Configuration;
 import Interfaces.IncompatibilityManager;
-import model.Catalogue;
-import model.PartName;
 import Interfaces.PartType;
 
 public class IncompatibilityManagerImpl implements IncompatibilityManager {
 
 	private ConfigImpl config;
-	private HashMap<PartType, ArrayList<PartType>> incompatibilities;
-	private HashMap<PartType, ArrayList<PartType>> requirements;
+	private Map<PartType, ArrayList<PartType>> incompatibilities;
+	private Map<PartType, ArrayList<PartType>> requirements;
 
 	public IncompatibilityManagerImpl(ConfigImpl config) {
 		this.config = config;
-		this.incompatibilities = new HashMap<PartType, ArrayList<PartType>>();
-		this.requirements = new HashMap<PartType, ArrayList<PartType>>();
+		this.incompatibilities = new HashMap<>();
+		this.requirements = new HashMap<>();
 	}
 
-	public IncompatibilityManagerImpl(HashMap<PartType, ArrayList<PartType>> incompatibilities,
-			HashMap<PartType, ArrayList<PartType>> requirements, ConfigImpl config) {
+	public IncompatibilityManagerImpl(Map<PartType, ArrayList<PartType>> incompatibilities,
+			Map<PartType, ArrayList<PartType>> requirements, ConfigImpl config) {
 		this.config = config;
 		this.incompatibilities = incompatibilities;
 		this.requirements = requirements;
 	}
 
-	public HashMap<PartType, ArrayList<PartType>> getIncompatibilities() {
+	public Map<PartType, ArrayList<PartType>> getIncompatibilities() {
 		return this.incompatibilities;
 	}
 
-	public HashMap<PartType, ArrayList<PartType>> getRequirements() {
+	public Map<PartType, ArrayList<PartType>> getRequirements() {
 		return this.requirements;
 	}
 
-	@SuppressWarnings("unlikely-arg-type")
 	public boolean addRequirement(PartType partype, PartType requirement) {
-		if (!partype.equals(requirements)) {
-			throw new IllegalArgumentException("This part already contains all this requirements");
-		}
 		if (requirements.containsKey(partype)) {
 			if (!requirements.get(partype).contains(requirement))
 				requirements.get(partype).add(requirement);
@@ -66,11 +58,7 @@ public class IncompatibilityManagerImpl implements IncompatibilityManager {
 		return false;
 	}
 
-	@SuppressWarnings("unlikely-arg-type")
 	public boolean addIncompatibility(PartType partype, PartType incompatibility) {
-		if (!partype.equals(this.incompatibilities)) {
-			throw new IllegalArgumentException("This part already contains all this incompatibilities");
-		}
 		if (incompatibilities.containsKey(partype)) {
 			if (!incompatibilities.get(partype).contains(incompatibility))
 				incompatibilities.get(partype).add(incompatibility);
@@ -113,15 +101,14 @@ public class IncompatibilityManagerImpl implements IncompatibilityManager {
 		return true;
 
 	}
-	
-	public void ChangeConfig(Configuration c){
+
+	public void ChangeConfig(Configuration c) {
 		this.config = (ConfigImpl) c;
 	}
 
-
 	@Override
 	public String toString() {
-		return "Incompatiblity =" + incompatibilities + ", Requirement =" + requirements;
+		return "\n  Incompatiblities = " + incompatibilities + "\n  Requirements = " + requirements;
 	}
 
 }

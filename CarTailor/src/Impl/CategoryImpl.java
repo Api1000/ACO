@@ -18,13 +18,13 @@ public class CategoryImpl implements Category {
 	private Set<PartType> partImpl;
 
 	public CategoryImpl() {
-		//this.category = new String();
+		// this.category = new String();
 		super();
 	}
 
 	public CategoryImpl(String category) {
 		this.category = category;
-		this.partImpl = new HashSet<PartType>();
+		this.partImpl = new HashSet<>();
 	}
 
 	public CategoryImpl(String category, Set<PartType> partImpl) {
@@ -79,7 +79,7 @@ public class CategoryImpl implements Category {
 
 	@Override
 	public String toString() {
-		return "Category==> " + category + " = " + partImpl;
+		return "\n  " + category + " = " + partImpl;
 	}
 
 	/**

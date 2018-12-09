@@ -12,7 +12,7 @@ public class ObservableImpl<T> implements Observable<T> {
 	private Collection<Observer<T>> myObserver;
 
 	public ObservableImpl() {
-		myObserver = new ArrayList<Observer<T>>();
+		myObserver = new ArrayList<>();
 	}
 
 	@Override
@@ -32,13 +32,11 @@ public class ObservableImpl<T> implements Observable<T> {
 
 	@Override
 	public T getValue() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public void setValue(Object v) {
-		// TODO Auto-generated method stub
 	}
 
 	@Override

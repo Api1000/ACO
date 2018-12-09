@@ -2,18 +2,19 @@ package Interfaces;
 
 import java.util.Collection;
 
+import Impl.ConfigImpl;
+
 public interface Configurator {
 
-		
-		//public void init() throws NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException;
-		
 		public Collection<Category> getCategory();
 		
 		public Configuration getConfig();
 		
 		public IncompatibilityManager getCompapatibilityManager();
 		
-		public boolean isValide();
+		public void setConfig(ConfigImpl config);
+		
+		public boolean isValid();
 		
 		public void newConfig();
 		

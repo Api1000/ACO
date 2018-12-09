@@ -1,18 +1,13 @@
 package Interfaces;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Set;
-
-import model.Catalogue;
-import model.PartName;
-import Interfaces.PartType;
+import java.util.Map;
 
 public interface IncompatibilityManager {
 
-	public HashMap<PartType, ArrayList<PartType>> getIncompatibilities();
+	public Map<PartType, ArrayList<PartType>> getIncompatibilities();
 
-	public HashMap<PartType, ArrayList<PartType>> getRequirements();
+	public Map<PartType, ArrayList<PartType>> getRequirements();
 
 	public boolean addRequirement(PartType partype, PartType requirement);
 

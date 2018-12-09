@@ -33,7 +33,6 @@ public class TestCategory {
 	@Test
 	public void TestAddCategory() {
 		assertTrue(category.addCategory(partype1));
-		//System.out.println(category.toString());
 	}
 
 	/**
@@ -42,9 +41,17 @@ public class TestCategory {
 	 */
 	@Test
 	public void TestAddCategory2() {
-		//System.out.println(partype2.getCategory().getCategoryString());
 		assertFalse(category.addCategory(partype2));
-		//System.out.println(category.toString());
+	}
+	
+	/**
+	 * Test of AddCategory method
+	 * @return false : Can't add twice a part in the same category
+	 */
+	@Test
+	public void TestAddCategory3() {
+		assertTrue(category.addCategory(partype1));
+		assertFalse(category.addCategory(partype1));
 	}
 
 	/**
@@ -54,9 +61,7 @@ public class TestCategory {
 	@Test
 	public void TestRemoveCategory() {
 		assertTrue(category2.addCategory(partype3));
-		//System.out.println(category2.toString());
 		assertTrue(category2.removeCategory(partype3));
-		//System.out.println(category2.toString());
 	}
 
 	/**

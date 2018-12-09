@@ -17,29 +17,22 @@ import Interfaces.Observable;
 
 public class ConfigImpl extends ObservableImpl<ConfigImpl> implements Configuration {
 
-	//public Set<PartType> Parts;
-	private Map<Category, PartType> catalogue = new HashMap<Category, PartType>();
-	private Map<Category, Set<PartType>> config = new HashMap<Category, Set<PartType>>();
+	private Map<Category, PartType> catalogue = new HashMap<>();
+	//private Map<Category, Set<PartType>> config = new HashMap<>();
 
 
 	public ConfigImpl() {
-		// this.Parts = new HashSet<PartType>();
-		this.catalogue = new HashMap<Category, PartType>();
+		this.catalogue = new HashMap<>();
 	}
 
 	public ConfigImpl(Map<Category, PartType> catalogue) {
 		this.catalogue = catalogue;
 	}
 
-	/*public ConfigImpl(Map<Category, Set<PartType>> config) {
-		this.config = config;
-	}*/
 
 	public Map<Category, PartType> getcatalogue() {
 		return this.catalogue;
 	}
-	
-
 
 	public boolean AddPart(PartType pt) {
 		Category cat = pt.getCategory();
@@ -52,12 +45,6 @@ public class ConfigImpl extends ObservableImpl<ConfigImpl> implements Configurat
 		}
 	}
 
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
 
 	public boolean RemovePart(PartType partype) {
 		Category cat = partype.getCategory();
@@ -70,18 +57,14 @@ public class ConfigImpl extends ObservableImpl<ConfigImpl> implements Configurat
 		return false;
 	}
 
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
-
 	public boolean isValid() {
 		if (this.catalogue.size() != 4) {
 			return false;
 		} else {
 			Boolean[] tabOfCategories = new Boolean[4];
+			for(int i=0; i<tabOfCategories.length; i++) {
+				tabOfCategories[i] = false;
+			}
 			Collection<PartType> c = this.catalogue.values();
 			for (PartType myPart : c) {
 				Category cat = myPart.getCategory();
@@ -98,6 +81,7 @@ public class ConfigImpl extends ObservableImpl<ConfigImpl> implements Configurat
 						tabOfCategories[1] = true;
 				}
 				if (cat.getCategoryString() == "Exterior") {
+					//System.out.println(tabOfCategories[2] == true);
 					if (tabOfCategories[2] == true) {
 						return false;
 					} else
@@ -114,46 +98,22 @@ public class ConfigImpl extends ObservableImpl<ConfigImpl> implements Configurat
 		}
 	}
 
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
-
 	public Collection<PartType> getMyParts() {
-		Collection<PartType> res = new HashSet<PartType>();
+		Collection<PartType> res;
 		res = catalogue.values();
 		return res;
-		
+
 	}
 
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
-
-	public PartType ShowMyPartFromCategory(Category parameter) {
-		if (catalogue.containsKey(parameter)) {
-			return catalogue.get(parameter);
-		} else {
-			return null;
+	public PartType ShowMyPartFromCategory(Category cat) {
+		if (catalogue.containsKey(cat)) {
+			return catalogue.get(cat);
 		}
+		return null;
 	}
-
-	/*public String toString() {
-		String result = "My configuration :\n";
-		Set<PartType> myparts = (Set<PartType>) catalogue.values();
-		for(PartType partI : myparts) {
-			result += partI.toString() +"\n";
-		}
-		return result;
-	}*/
 
 	@Override
 	public String toString() {
-		return "MyConfig = \n " + catalogue + "\n";
+		return catalogue +"";
 	}
 }
