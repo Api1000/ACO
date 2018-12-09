@@ -1,4 +1,5 @@
 package Impl;
+
 import java.util.Set;
 import java.util.HashSet;
 import java.util.Set;
@@ -6,88 +7,86 @@ import java.util.Set;
 import Interfaces.Category;
 import Interfaces.PartType;
 
-
 /**
- * <!-- begin-user-doc -->
- * <!--  end-user-doc  -->
+ * <!-- begin-user-doc --> <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class CategoryImpl implements Category {
-	
-	public String category;
-	public Set<PartType> partImpl;
 
+	private String category;
+	private Set<PartType> partImpl;
 
-	public CategoryImpl(){
-		this.category = new String();
+	public CategoryImpl() {
+		//this.category = new String();
+		super();
 	}
-	
 
 	public CategoryImpl(String category) {
 		this.category = category;
 		this.partImpl = new HashSet<PartType>();
 	}
-	
-	public CategoryImpl(String category,  Set<PartType> partImpl) {
+
+	public CategoryImpl(String category, Set<PartType> partImpl) {
 		this.category = category;
 		this.partImpl = partImpl;
 	}
 
-	
-	public boolean removeCategory(PartType partCategory) {
-		if (!this.partImpl.contains(partCategory)){
-			return false;
-		}
-		else
-			this.partImpl.remove(partCategory);
-		return true;
-
+	public String getCategoryString() {
+		return category;
 	}
-	
-	
-	public boolean addCategory(PartType partCategory) {
-		if (this.partImpl.contains(partCategory)){
-			return false;
-		}
-		else
-			this.partImpl.add(partCategory);
-		return true;
 
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+	public Set<PartType> getPartImpl() {
+		return partImpl;
+	}
+
+	public void setPartImpl(Set<PartType> partImpl) {
+		this.partImpl = partImpl;
+	}
+
+	public boolean addCategory(PartType partCategory) {
+		if (category.equals(partCategory.getCategory().getCategoryString())) {
+			if (this.partImpl.contains(partCategory)) {
+				return false;
+			} else
+				this.partImpl.add(partCategory);
+			return true;
+		}
+		return false;
+	}
+
+	public boolean removeCategory(PartType partCategory) {
+		if (category.equals(partCategory.getCategory().getCategoryString())) {
+			if (!this.partImpl.contains(partCategory)) {
+				return false;
+			} else
+				this.partImpl.remove(partCategory);
+			return true;
+		}
+		return false;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
-	
-	public String getCategory() {
-		return this.category;
-	}
-
-	
-
-	public Set<PartType> getPartImpl() {
-		return this.partImpl;
-	}
-
-
-
 
 	@Override
 	public String toString() {
-		return  "\n" + category;
+		return "Category==> " + category + " = " + partImpl;
 	}
 
-
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 
-	
 }
-

@@ -18,8 +18,8 @@ import Interfaces.Observable;
 public class ConfigImpl extends ObservableImpl<ConfigImpl> implements Configuration {
 
 	//public Set<PartType> Parts;
-	public Map<Category, PartType> catalogue = new HashMap<Category, PartType>();
-	public Map<Category, Set<PartType>> config = new HashMap<Category, Set<PartType>>();
+	private Map<Category, PartType> catalogue = new HashMap<Category, PartType>();
+	private Map<Category, Set<PartType>> config = new HashMap<Category, Set<PartType>>();
 
 
 	public ConfigImpl() {
@@ -85,25 +85,25 @@ public class ConfigImpl extends ObservableImpl<ConfigImpl> implements Configurat
 			Collection<PartType> c = this.catalogue.values();
 			for (PartType myPart : c) {
 				Category cat = myPart.getCategory();
-				if (cat.getCategory() == "Engine") {
+				if (cat.getCategoryString() == "Engine") {
 					if (tabOfCategories[0] == true) {
 						return false;
 					} else
 						tabOfCategories[0] = true;
 				}
-				if (cat.getCategory() == "Transmission") {
+				if (cat.getCategoryString() == "Transmission") {
 					if (tabOfCategories[1] == true) {
 						return false;
 					} else
 						tabOfCategories[1] = true;
 				}
-				if (cat.getCategory() == "Exterior") {
+				if (cat.getCategoryString() == "Exterior") {
 					if (tabOfCategories[2] == true) {
 						return false;
 					} else
 						tabOfCategories[2] = true;
 				}
-				if (cat.getCategory() == "Interior") {
+				if (cat.getCategoryString() == "Interior") {
 					if (tabOfCategories[3] == true) {
 						return false;
 					} else

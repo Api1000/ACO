@@ -30,7 +30,7 @@ public interface Category {
 		public boolean removeCategory(PartType partCategory); 
 		
 
-		public String getCategory();
+		public String getCategoryString();
 		
 		public Set<PartType> getPartImpl();
 	}

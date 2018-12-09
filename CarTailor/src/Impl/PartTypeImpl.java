@@ -19,16 +19,16 @@ import model.PartName;
 
 public class PartTypeImpl implements PartType {
 
-	public Category category;
-	public PartName name;
-	public PartDescription description;
-	public IncompatibilityManager im;
+	private Category category;
+	private PartName name;
+	private PartDescription description;
+	private IncompatibilityManager im;
 
 	public PartTypeImpl() {
 		this.category = new CategoryImpl();
 		this.name = new PartName();
 		this.description = new PartDescription();
-		this.im = new IncompatibilityManagerImpl();
+		//this.im = new IncompatibilityManagerImpl();
 	}
 
 	public PartTypeImpl(Category category, PartName name, PartDescription description) {
