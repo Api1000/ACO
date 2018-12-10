@@ -10,7 +10,7 @@ public interface Configurator {
 		
 		public Configuration getConfig();
 		
-		public IncompatibilityManager getCompapatibilityManager();
+		public IncompatibilityManager getIncompatibilityManager();
 		
 		public void setConfig(ConfigImpl config);
 		

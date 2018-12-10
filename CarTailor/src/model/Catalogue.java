@@ -20,7 +20,7 @@ import Interfaces.PartType;
  * All PartTypes for the configuration of the car are available in this catalog
  * If you want to test some methods, you have to pick up PartType here.
  * In an interface, this catalog is expose to the customer. So, he will choose the configuration of his car
- * @author Romiche
+ * @author Romain
  *
  */
 public class Catalogue {

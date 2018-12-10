@@ -19,6 +19,12 @@ import Interfaces.Configurator;
 import Interfaces.PartType;
 import model.Catalogue;
 
+/**
+ * Test class of the configurator
+ * 
+ * @author Romain
+ *
+ */
 public class TestConfigurator {
 
 	// The constructor of ConfiguratorImpl use InitConfigurator();
@@ -27,9 +33,6 @@ public class TestConfigurator {
 	private Catalogue cat = new Catalogue();
 	private Configurator configurator = new ConfiguratorImpl();
 	private Category Engine = new CategoryImpl("Engine");
-	private Category Transmission = new CategoryImpl("Transmission");
-	private Category Exterior = new CategoryImpl("Exterior");
-	private Category Interior = new CategoryImpl("Interior");
 
 	/*
 	 * Initalizing Test of the configurator
@@ -37,7 +40,6 @@ public class TestConfigurator {
 	 * The configurator contains only the four Category (Engine, Transmission,
 	 * Exterior, Interior)
 	 */
-
 	@Test
 	public void TestInitConfigurator() {
 		cat.cataconfig.put(cat.partengine1.getCategory(), cat.partengine1);
@@ -60,7 +62,6 @@ public class TestConfigurator {
 	 * 
 	 * The configurator contains all the PartType available in the category Engine
 	 */
-
 	@Test
 	public void TestInitEngine() {
 		cat.cataconfig.put(cat.partengine1.getCategory(), cat.partengine1);
@@ -86,7 +87,6 @@ public class TestConfigurator {
 	 * The configurator contains all the PartType available in the category
 	 * Transmission
 	 */
-
 	@Test
 	public void TestInitTransmission() {
 		cat.cataconfig.put(cat.partengine1.getCategory(), cat.partengine1);
@@ -105,12 +105,12 @@ public class TestConfigurator {
 		assertTrue(count == 6);
 		assertTrue(coll.containsAll(cat.cataconfig.keySet()));
 	}
+
 	/*
 	 * Initalizing Test of the configurator
 	 * 
 	 * The configurator contains all the PartType available in the category Exterior
 	 */
-
 	@Test
 	public void TestInitExterior() {
 		cat.cataconfig.put(cat.partengine1.getCategory(), cat.partengine1);
@@ -172,14 +172,15 @@ public class TestConfigurator {
 	/*
 	 * Test RemovePart method
 	 * 
-	 * @return true : Can remove a part from the config
+	 * @return true : Can remove a part from the config of the configurator
 	 */
 	@Test
 	public void TestRemovePart() {
-		assertTrue(configurator.addPart(cat.partengine1));
+		cat.cataconfig.put(cat.partengine1.getCategory(), cat.partengine1);
+		ConfigImpl config = new ConfigImpl(cat.cataconfig);
+		configurator.setConfig(config);
 		System.out.println(configurator.toString());
-		assertTrue(configurator.removePart(cat.partengine1));
-
+		assertTrue(config.RemovePart(cat.partengine1));
 	}
 
 	/*
@@ -194,19 +195,27 @@ public class TestConfigurator {
 	}
 
 	/*
-	 * can not show the Part from the category c if c is not in the config
+	 * Test GetMyPartFromCategory method
+	 * 
+	 * Show the part from the category in the config
 	 */
 	@Test
-	public void testGetMyPartFromCategory1() {
-
+	public void TestGetMyPartFromCategory() {
+		cat.cataconfig.put(cat.partengine1.getCategory(), cat.partengine1);
+		ConfigImpl config = new ConfigImpl(cat.cataconfig);
+		configurator.setConfig(config);
+		assertEquals(configurator.getMyPartFromCategory(Engine), cat.partengine1);
 	}
 
 	/*
-	 * show properly the part from the category c in the config
+	 * Test GetMyPartFromCategory method
+	 * 
+	 * Can not show the Part from the category if it is not in the config
+	 * 
 	 */
 	@Test
-	public void testGetMyPartFromCategory2() {
-
+	public void TestGetNotPartFromCategory() {
+		assertEquals(configurator.getMyPartFromCategory(Engine), null);
 	}
 
 	/*
@@ -237,7 +246,7 @@ public class TestConfigurator {
 		configurator.setConfig(config);
 		assertFalse(configurator.isValid());
 	}
-	
+
 	/*
 	 * Test isValid method
 	 * 
@@ -270,5 +279,5 @@ public class TestConfigurator {
 		configurator.setConfig(config);
 		assertFalse(configurator.isValid());
 	}
-	
+
 }

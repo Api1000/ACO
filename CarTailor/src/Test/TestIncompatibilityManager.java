@@ -12,6 +12,11 @@ import Impl.IncompatibilityManagerImpl;
 import Interfaces.PartType;
 import model.Catalogue;
 
+/**
+ * Test class of IncompatibilityManagerImpl
+ * @author Romain
+ *
+ */
 public class TestIncompatibilityManager {
 
 	private Catalogue cat = new Catalogue();
@@ -108,7 +113,7 @@ public class TestIncompatibilityManager {
 	/**
 	 * Test of isCompatible method
 	 * 
-	 * @return true :
+	 * @return true : incompatibility valid for the config
 	 */
 	@Test
 	public void isValidIncompatibility() {
@@ -119,7 +124,7 @@ public class TestIncompatibilityManager {
 	/**
 	 * Test of isCompatible method
 	 * 
-	 * @return true :
+	 * @return true : requirement valid for the config
 	 */
 	@Test
 	public void isValidRequirement() {
@@ -130,20 +135,16 @@ public class TestIncompatibilityManager {
 	/**
 	 * Test of isCompatible method
 	 * 
-	 * @return false :
+	 * @return false : incompatiblity and requirement between the same Part is invalid
 	 */
 	@Test
-	public void isInValidIncompatiblity() {
-		assertFalse(configIR.isCompatible());
-	}
-	
-	/**
-	 * Test of isCompatible method
-	 * 
-	 * @return false :
-	 */
-	@Test
-	public void isInValidRequirement() {
+	public void isInValid() {
+		config1.AddPart(cat.partengine1);
+		config1.AddPart(cat.parttrans3);
+		configIR = new IncompatibilityManagerImpl(config1);
+		assertTrue(configIR.addIncompatibility(cat.parttrans3, cat.partengine1));
+		assertTrue(configIR.addRequirement(cat.parttrans3, cat.partengine1));
+		System.out.println(configIR.toString());
 		assertFalse(configIR.isCompatible());
 	}
 }

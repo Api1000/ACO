@@ -73,4 +73,13 @@ public class TestCategory {
 		assertFalse(category2.removePartInCategory(partype3));
 	}
 	
+	/**
+	 * Test of removePartInCategory method
+	 * @return false : Can't remove a Part from a category if it doesn't exist in
+	 */
+	@Test
+	public void TestRemoveNotInCategory2() {
+		assertFalse(category2.removePartInCategory(partype2));
+	}
+	
 }

@@ -14,17 +14,15 @@ public class IncompatibilityManagerImpl implements IncompatibilityManager {
 	private Map<PartType, ArrayList<PartType>> incompatibilities;
 	private Map<PartType, ArrayList<PartType>> requirements;
 
+	/**
+	 * 
+	 * @param config
+	 * @see
+	 */
 	public IncompatibilityManagerImpl(ConfigImpl config) {
 		this.config = config;
 		this.incompatibilities = new HashMap<>();
 		this.requirements = new HashMap<>();
-	}
-
-	public IncompatibilityManagerImpl(Map<PartType, ArrayList<PartType>> incompatibilities,
-			Map<PartType, ArrayList<PartType>> requirements, ConfigImpl config) {
-		this.config = config;
-		this.incompatibilities = incompatibilities;
-		this.requirements = requirements;
 	}
 
 	public Map<PartType, ArrayList<PartType>> getIncompatibilities() {
@@ -35,10 +33,16 @@ public class IncompatibilityManagerImpl implements IncompatibilityManager {
 		return this.requirements;
 	}
 
+	/**
+	 * Add a requirement between 2 parts
+	 * @param partype, requirement
+	 * @return true : added
+	 * @return false : not added
+	 */
 	public boolean addRequirement(PartType partype, PartType requirement) {
 		if (requirements.containsKey(partype)) {
 			if (!requirements.get(partype).contains(requirement))
-				requirements.get(partype).add(requirement);
+				return requirements.get(partype).add(requirement);
 			else
 				return false;
 		} else {
@@ -50,6 +54,12 @@ public class IncompatibilityManagerImpl implements IncompatibilityManager {
 
 	}
 
+	/**
+	 * Remove a requirement between 2 parts
+	 * @param partype, requirement
+	 * @return true : removed
+	 * @return false : not removed
+	 */
 	public boolean removeRequirement(PartType partype, PartType requirement) {
 		if (requirements.containsKey(partype)) {
 			if (requirements.get(partype).contains(requirement))
@@ -58,10 +68,16 @@ public class IncompatibilityManagerImpl implements IncompatibilityManager {
 		return false;
 	}
 
+	/**
+	 * Add an incompatibility between 2 parts
+	 * @param partype, incompatibility
+	 * @return true : added
+	 * @return false : not added
+	 */
 	public boolean addIncompatibility(PartType partype, PartType incompatibility) {
 		if (incompatibilities.containsKey(partype)) {
 			if (!incompatibilities.get(partype).contains(incompatibility))
-				incompatibilities.get(partype).add(incompatibility);
+				return incompatibilities.get(partype).add(incompatibility);
 			else
 				return false;
 		} else {
@@ -73,6 +89,12 @@ public class IncompatibilityManagerImpl implements IncompatibilityManager {
 
 	}
 
+	/**
+	 * Remove an incompatibility between 2 parts
+	 * @param partype, incompatibility
+	 * @return true : removed
+	 * @return false : not removed
+	 */
 	public boolean removeIncompatibility(PartType partype, PartType incompatibility) {
 		if (incompatibilities.containsKey(partype)) {
 			if (incompatibilities.get(partype).contains(incompatibility))
@@ -82,18 +104,46 @@ public class IncompatibilityManagerImpl implements IncompatibilityManager {
 
 	}
 
+	/**
+	 * Test if the incompatibilitymanager is valid or not 
+	 * @return true : is valid
+	 * @return false : is not valid
+	 */
 	public boolean isCompatible() {
-		Collection<PartType> myPartsConfig = config.getcatalogue().values();
-		for (PartType p : myPartsConfig) {
-			if (incompatibilities.containsKey(p)) {
-				Collection<PartType> incompat = incompatibilities.get(p);
-				for (PartType incompatPart : myPartsConfig) {
-					if (incompat.contains(incompatPart))
+		Collection<PartType> myPartsConfig = config.getMyParts();
+		Collection<String> myConfigString = new ArrayList<>();
+		for (PartType p : myPartsConfig)
+			myConfigString.add(p.getName().partName);
+
+		// Convert PartType to String;
+		Map<String, ArrayList<String>> incompatKeyToString = new HashMap<>();
+		Map<String, ArrayList<String>> requireKeyToString = new HashMap<>();
+		for (PartType p : this.incompatibilities.keySet()) {
+			ArrayList<String> incompatValuesToString = new ArrayList<>();
+			for (PartType p1 : this.incompatibilities.get(p))
+				incompatValuesToString.add(p1.getName().partName);
+			incompatKeyToString.put(p.getName().partName, incompatValuesToString);
+		}
+		for (PartType p : this.requirements.keySet()) {
+			ArrayList<String> requireValuesToString = new ArrayList<>();
+			for (PartType p1 : this.requirements.get(p))
+				requireValuesToString.add(p1.getName().partName);
+			requireKeyToString.put(p.getName().partName, requireValuesToString);
+		}
+
+		// End of conversion
+
+		for (String p : myConfigString) {
+
+			if (incompatKeyToString.containsKey(p)) {
+				ArrayList<String> toCompare = incompatKeyToString.get(p);
+				for (String s : toCompare) {
+					if (myConfigString.contains(s))
 						return false;
 				}
 			}
-			if (requirements.containsKey(p)) {
-				if (!myPartsConfig.containsAll(requirements.get(p))) {
+			if (requireKeyToString.containsKey(p)) {
+				if (!myConfigString.containsAll(requireKeyToString.get(p))) {
 					return false;
 				}
 			}
@@ -102,6 +152,10 @@ public class IncompatibilityManagerImpl implements IncompatibilityManager {
 
 	}
 
+	/**
+	 * Change the configuration of the incompatibilitymanager
+	 * @param Configuration
+	 */
 	public void ChangeConfig(Configuration c) {
 		this.config = (ConfigImpl) c;
 	}

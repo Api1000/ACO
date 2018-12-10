@@ -4,7 +4,6 @@ import java.util.Set;
 import java.util.Collection;
 import java.util.Map;
 
-import Impl.PartImpl;
 import model.PartName;
 
 /**

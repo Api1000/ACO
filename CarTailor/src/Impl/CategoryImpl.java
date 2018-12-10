@@ -18,7 +18,6 @@ public class CategoryImpl implements Category {
 	private Set<PartType> partImpl;
 
 	public CategoryImpl() {
-		// this.category = new String();
 		super();
 	}
 
@@ -27,27 +26,21 @@ public class CategoryImpl implements Category {
 		this.partImpl = new HashSet<>();
 	}
 
-	public CategoryImpl(String category, Set<PartType> partImpl) {
-		this.category = category;
-		this.partImpl = partImpl;
-	}
-
 	public String getCategoryString() {
 		return category;
-	}
-
-	public void setCategory(String category) {
-		this.category = category;
 	}
 
 	public Set<PartType> getPartImpl() {
 		return partImpl;
 	}
 
-	public void setPartImpl(Set<PartType> partImpl) {
-		this.partImpl = partImpl;
-	}
-
+	/**
+	 * Add a part in its category
+	 * 
+	 * @param PartType
+	 * @return true : added
+	 * @return false : not added
+	 */
 	public boolean addPartInCategory(PartType partCategory) {
 		if (category.equals(partCategory.getCategory().getCategoryString())) {
 			if (this.partImpl.contains(partCategory)) {
@@ -59,6 +52,13 @@ public class CategoryImpl implements Category {
 		return false;
 	}
 
+	/**
+	 * Remove a part in its category
+	 * 
+	 * @param PartType
+	 * @return true : removed
+	 * @return false : not removed
+	 */
 	public boolean removePartInCategory(PartType partCategory) {
 		if (category.equals(partCategory.getCategory().getCategoryString())) {
 			if (!this.partImpl.contains(partCategory)) {
@@ -70,23 +70,8 @@ public class CategoryImpl implements Category {
 		return false;
 	}
 
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
-
 	@Override
 	public String toString() {
 		return "\n  " + category + " = " + partImpl;
 	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
-
 }
