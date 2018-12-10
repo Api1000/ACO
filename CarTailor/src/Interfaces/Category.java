@@ -4,9 +4,9 @@ import java.util.Set;
 
 public interface Category {
 
-	public boolean addCategory(PartType partCategory);
+	public boolean addPartInCategory(PartType partCategory);
 
-	public boolean removeCategory(PartType partCategory);
+	public boolean removePartInCategory(PartType partCategory);
 
 	public String getCategoryString();
 

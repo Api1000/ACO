@@ -48,7 +48,7 @@ public class CategoryImpl implements Category {
 		this.partImpl = partImpl;
 	}
 
-	public boolean addCategory(PartType partCategory) {
+	public boolean addPartInCategory(PartType partCategory) {
 		if (category.equals(partCategory.getCategory().getCategoryString())) {
 			if (this.partImpl.contains(partCategory)) {
 				return false;
@@ -59,7 +59,7 @@ public class CategoryImpl implements Category {
 		return false;
 	}
 
-	public boolean removeCategory(PartType partCategory) {
+	public boolean removePartInCategory(PartType partCategory) {
 		if (category.equals(partCategory.getCategory().getCategoryString())) {
 			if (!this.partImpl.contains(partCategory)) {
 				return false;

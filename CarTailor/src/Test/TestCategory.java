@@ -31,7 +31,7 @@ public class TestCategory {
 	 * @return true : Can add a Part in his own category
 	 */
 	@Test
-	public void TestAddCategory() {
+	public void TestAddInCategory() {
 		assertTrue(category.addCategory(partype1));
 	}
 
@@ -40,7 +40,7 @@ public class TestCategory {
 	 * @return false : Can't add a part of another category in the current category
 	 */
 	@Test
-	public void TestAddCategory2() {
+	public void TestAddNotInCategory() {
 		assertFalse(category.addCategory(partype2));
 	}
 	
@@ -49,7 +49,7 @@ public class TestCategory {
 	 * @return false : Can't add twice a part in the same category
 	 */
 	@Test
-	public void TestAddCategory3() {
+	public void TestAddNotSameInCategory() {
 		assertTrue(category.addCategory(partype1));
 		assertFalse(category.addCategory(partype1));
 	}
@@ -59,7 +59,7 @@ public class TestCategory {
 	 * @return true : Can remove a Part from a category
 	 */
 	@Test
-	public void TestRemoveCategory() {
+	public void TestRemoveInCategory() {
 		assertTrue(category2.addCategory(partype3));
 		assertTrue(category2.removeCategory(partype3));
 	}
@@ -69,7 +69,7 @@ public class TestCategory {
 	 * @return false : Can't remove a Part from a category if it doesn't exist in
 	 */
 	@Test
-	public void TestRemoveCategory2() {
+	public void TestRemoveNotInCategory() {
 		assertFalse(category2.removeCategory(partype3));
 	}
 	

@@ -112,27 +112,27 @@ public class ConfiguratorImpl implements Configurator {
 		Category Exterior = new CategoryImpl("Exterior");
 		Category Interior = new CategoryImpl("Interior");
 		
-		Engine.addCategory(cat.partengine1);
-		Engine.addCategory(cat.partengine2);
-		Engine.addCategory(cat.partengine3);
-		Engine.addCategory(cat.partengine4);
-		Engine.addCategory(cat.partengine5);
-		Engine.addCategory(cat.partengine6);
+		Engine.addPartInCategory(cat.partengine1);
+		Engine.addPartInCategory(cat.partengine2);
+		Engine.addPartInCategory(cat.partengine3);
+		Engine.addPartInCategory(cat.partengine4);
+		Engine.addPartInCategory(cat.partengine5);
+		Engine.addPartInCategory(cat.partengine6);
 
-		Transmission.addCategory(cat.parttrans1);
-		Transmission.addCategory(cat.parttrans2);
-		Transmission.addCategory(cat.parttrans3);
-		Transmission.addCategory(cat.parttrans4);	
-		Transmission.addCategory(cat.parttrans5);
-		Transmission.addCategory(cat.parttrans6);
+		Transmission.addPartInCategory(cat.parttrans1);
+		Transmission.addPartInCategory(cat.parttrans2);
+		Transmission.addPartInCategory(cat.parttrans3);
+		Transmission.addPartInCategory(cat.parttrans4);	
+		Transmission.addPartInCategory(cat.parttrans5);
+		Transmission.addPartInCategory(cat.parttrans6);
 		
-		Exterior.addCategory(cat.partext1);
-		Exterior.addCategory(cat.partext2);	
-		Exterior.addCategory(cat.partext3);	
+		Exterior.addPartInCategory(cat.partext1);
+		Exterior.addPartInCategory(cat.partext2);	
+		Exterior.addPartInCategory(cat.partext3);	
 		
-		Interior.addCategory(cat.partint1);
-		Interior.addCategory(cat.partint2);
-		Interior.addCategory(cat.partint3);
+		Interior.addPartInCategory(cat.partint1);
+		Interior.addPartInCategory(cat.partint2);
+		Interior.addPartInCategory(cat.partint3);
 		
 		this.CategoryAvailable.add(Engine); this.CategoryAvailable.add(Transmission); this.CategoryAvailable.add(Exterior); this.CategoryAvailable.add(Interior);
 		

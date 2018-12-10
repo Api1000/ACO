@@ -24,7 +24,7 @@ public class TestIncompatibilityManager {
 	 * @return true : Can add an incompatibility between 2 parts
 	 */
 	@Test
-	public void addIncompatibilities1() {
+	public void AddIncompatibilitiesBetween2Parts() {
 		assertTrue(configIR.addIncompatibility(cat.parttrans3, cat.partengine1));
 	}
 
@@ -34,7 +34,7 @@ public class TestIncompatibilityManager {
 	 * @return false : Can't add twice an incompatibility between 2 parts
 	 */
 	@Test
-	public void addIncompatibilities2() {
+	public void AddNotIncompatibilitiesBetween2Parts() {
 		assertTrue(configIR.addIncompatibility(cat.parttrans3, cat.partengine1));
 		assertFalse(configIR.addIncompatibility(cat.parttrans3, cat.partengine1));
 	}
@@ -45,7 +45,7 @@ public class TestIncompatibilityManager {
 	 * @return true : Can add a requirement between 2 parts
 	 */
 	@Test
-	public void addRequirement1() {
+	public void AddRequirementBetween2Parts() {
 		assertTrue(configIR.addRequirement(cat.partengine6, cat.parttrans6));
 	}
 
@@ -55,7 +55,7 @@ public class TestIncompatibilityManager {
 	 * @return false : Can't add twice a requirement between 2 parts
 	 */
 	@Test
-	public void addRequirement2() {
+	public void AddNotRequirementBetween2Parts() {
 		assertTrue(configIR.addRequirement(cat.partengine6, cat.parttrans6));
 		assertFalse(configIR.addRequirement(cat.partengine6, cat.parttrans6));
 
@@ -67,7 +67,7 @@ public class TestIncompatibilityManager {
 	 * @return true : Can remove an incompatibility between 2 parts
 	 */
 	@Test
-	public void removeIncompatibilities1() {
+	public void RemoveIncompatibilitiesBetween2Parts() {
 		assertTrue(configIR.addIncompatibility(cat.partext1, cat.partengine3));
 		assertTrue(configIR.removeIncompatibility(cat.partext1, cat.partengine3));
 	}
@@ -79,7 +79,7 @@ public class TestIncompatibilityManager {
 	 *         exist before
 	 */
 	@Test
-	public void removeIncompatibilities2() {
+	public void RemoveNotIncompatibilitiesBetween2Parts() {
 		assertFalse(configIR.removeIncompatibility(cat.partext1, cat.partengine3));
 	}
 
@@ -89,7 +89,7 @@ public class TestIncompatibilityManager {
 	 * @return true : Can remove a requirement between 2 parts
 	 */
 	@Test
-	public void removeRequirements1() {
+	public void RemoveRequirementsBetween2Parts() {
 		assertTrue(configIR.addRequirement(cat.partext1, cat.partengine3));
 		assertTrue(configIR.removeRequirement(cat.partext1, cat.partengine3));
 	}
@@ -101,7 +101,7 @@ public class TestIncompatibilityManager {
 	 *         before
 	 */
 	@Test
-	public void removeRequirements2() {
+	public void RemoveNotRequirementsBetween2Parts() {
 		assertFalse(configIR.removeRequirement(cat.partext1, cat.partengine3));
 	}
 
@@ -111,7 +111,18 @@ public class TestIncompatibilityManager {
 	 * @return true :
 	 */
 	@Test
-	public void isValid1() {
+	public void isValidIncompatibility() {
+		assertTrue(configIR.addIncompatibility(cat.parttrans3, cat.partengine1));
+		assertTrue(configIR.isCompatible());
+	}
+	
+	/**
+	 * Test of isCompatible method
+	 * 
+	 * @return true :
+	 */
+	@Test
+	public void isValidRequirement() {
 		assertTrue(configIR.addRequirement(cat.partext3, cat.partint3));
 		assertTrue(configIR.isCompatible());
 	}
@@ -122,7 +133,17 @@ public class TestIncompatibilityManager {
 	 * @return false :
 	 */
 	@Test
-	public void isInValid() {
+	public void isInValidIncompatiblity() {
+		assertFalse(configIR.isCompatible());
+	}
+	
+	/**
+	 * Test of isCompatible method
+	 * 
+	 * @return false :
+	 */
+	@Test
+	public void isInValidRequirement() {
 		assertFalse(configIR.isCompatible());
 	}
 }

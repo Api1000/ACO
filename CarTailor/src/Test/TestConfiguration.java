@@ -3,7 +3,9 @@ package Test;
 import static org.junit.Assert.*;
 
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 
 import org.junit.After;
@@ -32,6 +34,7 @@ public class TestConfiguration {
 	private Configuration config1 = new ConfigImpl();
 	private Catalogue fromcatalogue = new Catalogue();
 	private Map<Category, PartType> catalogue = new HashMap<>();
+	private Collection<PartType> Parts = new HashSet<>();
 
 	/**
 	 * PartTypes from the catalog.
@@ -52,7 +55,7 @@ public class TestConfiguration {
 	 * @return true : Can add a part to the configuration
 	 */
 	@Test
-	public void TestAddPart1() {
+	public void TestAddPart() {
 		assertTrue(config1.AddPart(partype1));
 	}
 
@@ -62,7 +65,7 @@ public class TestConfiguration {
 	 * @return false : Can't add twice a part to the configuration
 	 */
 	@Test
-	public void TestAddPart2() {
+	public void TestAddNotSamePart() {
 		assertTrue(config1.AddPart(partype2));
 		assertFalse(config1.AddPart(partype2));
 	}
@@ -73,7 +76,7 @@ public class TestConfiguration {
 	 * @return true : Can remove a part to the configuration after adding it
 	 */
 	@Test
-	public void TestRemovePart1() {
+	public void TestRemovePart() {
 		assertTrue(config1.AddPart(partype1));
 		assertTrue(config1.RemovePart(partype1));
 	}
@@ -85,7 +88,7 @@ public class TestConfiguration {
 	 *         in.
 	 */
 	@Test
-	public void TestRemovePart2() {
+	public void TestRemoveNotPart() {
 		assertFalse(config1.RemovePart(partype2));
 	}
 
@@ -95,7 +98,7 @@ public class TestConfiguration {
 	 * @return true if the configuration contains a Part of each Category
 	 */
 	@Test
-	public void isValid1() {
+	public void isValidConfig() {
 		catalogue.put(partype1.getCategory(), partype1); //On ajoute les PartType(value) et leur category(key) dans une Map
 		catalogue.put(partype3.getCategory(), partype3);
 		catalogue.put(partype4.getCategory(), partype4);
@@ -111,7 +114,7 @@ public class TestConfiguration {
 	 */
 
 	@Test
-	public void isInValid() {
+	public void isInValidConfig() {
 		catalogue.put(partype1.getCategory(), partype1);
 		catalogue.put(partype3.getCategory(), partype3);
 		Configuration config = new ConfigImpl(catalogue); 
@@ -124,33 +127,36 @@ public class TestConfiguration {
 	 * @return false if the configuration doesn't contains a Part
 	 */
 	@Test
-	public void isInValid2() {
+	public void isInValidConfigWithoutParts() {
 		assertFalse(config1.isValid());
 	}
 
 	/**
 	 * Test of getMyParts method
 	 * 
+	 * 
 	 */
 	@Test
 	public void TestGetMyParts() {
-		// System.out.println(config1.getMyParts());
-		assertEquals(config1.getMyParts(), "[]");
-	}
+		catalogue.put(partype1.getCategory(), partype1);
+		Configuration config = new ConfigImpl(catalogue); 
+		Parts.add(partype1);
+		System.out.println(config.getMyParts());
+		assertTrue(config.getMyParts().containsAll(Parts));
+		System.out.println("[\n    |EG100, Gasoline, 100 kW|]");
+		assertEquals(config.getMyParts(), "EG100, Gasoline, 100 kW");
 
+	}
+	
 	/**
 	 * Test of getMyParts method
 	 * 
-	 * 
 	 */
 	@Test
-	public void TestGetMyParts2() {
-		fromcatalogue.EngineParts.add(partype1);
-		fromcatalogue.Engine = new CategoryImpl("Engine", fromcatalogue.EngineParts);
-		catalogue.put(fromcatalogue.Engine, partype1);
-		System.out.println(catalogue.toString());
-		// assertEquals()
-
+	public void TestCannotGetMyParts() {
+		System.out.println(config1.getMyParts());
+		assertFalse(config1.getMyParts().containsAll(Parts));
+		assertEquals(config1.getMyParts(), "[]");
 	}
 
 	/**
@@ -163,7 +169,7 @@ public class TestConfiguration {
 		fromcatalogue.EngineParts.add(partype1);
 		fromcatalogue.Engine = new CategoryImpl("Engine", fromcatalogue.EngineParts);
 		assertTrue(config1.ShowMyPartFromCategory(fromcatalogue.Engine).equals(partype1));
-		System.out.println();
+		//System.out.println();
 	}
 
 	/**

@@ -38,7 +38,7 @@ public class TestConfigurator {
 	@Test
 	public void testInit1() {
 
-		Collection<Category> toCompare = new HashSet<>();
+		/*Collection<Category> toCompare = new HashSet<>();
 		toCompare.add(Transmission);
 		toCompare.add(Interior);
 		toCompare.add(Exterior);
@@ -54,7 +54,13 @@ public class TestConfigurator {
 		Collection<String> myCatString = new HashSet<>();
 		for (Category c : myCat) {
 			myCatString.add(c.getCategoryString());
-		}
+		}*/
+		cat.cataconfig.put(cat.partengine1.getCategory(), cat.partengine1);
+		cat.cataconfig.put(cat.parttrans1.getCategory(), cat.parttrans1);
+		cat.cataconfig.put(cat.partext1.getCategory(), cat.partext1);
+		cat.cataconfig.put(cat.partint1.getCategory(), cat.partint1);
+
+
 		assertTrue(myCat.size() == 4);
 		assertEquals(myCatString.containsAll(toCompareString), toCompareString.containsAll(myCatString));
 	}
@@ -66,16 +72,16 @@ public class TestConfigurator {
 	@Test
 	public void testInit2() {
 
-		Engine.addCategory(cat.partengine1);
-		Engine.addCategory(cat.partengine2);
-		Engine.addCategory(cat.partengine3);
-		Engine.addCategory(cat.partengine4);
-		Engine.addCategory(cat.partengine5);
-		Engine.addCategory(cat.partengine6);
+		Engine.addPartInCategory(cat.partengine1);
+		Engine.addPartInCategory(cat.partengine2);
+		Engine.addPartInCategory(cat.partengine3);
+		Engine.addPartInCategory(cat.partengine4);
+		Engine.addPartInCategory(cat.partengine5);
+		Engine.addPartInCategory(cat.partengine6);
 
 		Collection<Category> myCategories = configurator.getCategory();
 		//System.out.println(configurator.toString());
-		String Eng = "Engine";
+		/*String Eng = "Engine";
 		Set<PartType> setP = new HashSet<>();
 		for (Category c : myCategories) {
 			if (c.getCategoryString() == Eng) {
@@ -91,10 +97,12 @@ public class TestConfigurator {
 		Set<String> toCompareWith = new HashSet<>();
 		for (PartType p : toCompare) {
 			toCompareWith.add(p.getName().partName);
-		}
+		}*/
+		cat.cataconfig.put(Engine, cat.partengine1);
+		
 		// System.out.println(Engine.toString());
-		assertTrue(toCompareWith.size() == 6);
-		assertEquals(toCompareWith.containsAll(setPToString), setPToString.containsAll(toCompareWith));
+		//assertTrue(toCompareWith.size() == 6);
+		//assertEquals(toCompareWith.containsAll(setPToString), setPToString.containsAll(toCompareWith));
 	}
 
 	/*
@@ -105,12 +113,12 @@ public class TestConfigurator {
 	@Test
 	public void testInit3() {
 
-		Transmission.addCategory(cat.parttrans1);
-		Transmission.addCategory(cat.parttrans2);
-		Transmission.addCategory(cat.parttrans3);
-		Transmission.addCategory(cat.parttrans4);
-		Transmission.addCategory(cat.parttrans5);
-		Transmission.addCategory(cat.parttrans6);
+		Transmission.addPartInCategory(cat.parttrans1);
+		Transmission.addPartInCategory(cat.parttrans2);
+		Transmission.addPartInCategory(cat.parttrans3);
+		Transmission.addPartInCategory(cat.parttrans4);
+		Transmission.addPartInCategory(cat.parttrans5);
+		Transmission.addPartInCategory(cat.parttrans6);
 
 		Collection<Category> myCategories = configurator.getCategory();
 		String Trans = "Transmission";
@@ -142,9 +150,9 @@ public class TestConfigurator {
 	@Test
 	public void testInit4() {
 
-		Exterior.addCategory(cat.partext1);
-		Exterior.addCategory(cat.partext2);
-		Exterior.addCategory(cat.partext3);
+		Exterior.addPartInCategory(cat.partext1);
+		Exterior.addPartInCategory(cat.partext2);
+		Exterior.addPartInCategory(cat.partext3);
 
 		Collection<Category> myCategories = configurator.getCategory();
 		String Ext = "Exterior";
@@ -176,9 +184,9 @@ public class TestConfigurator {
 	@Test
 	public void testInit5() {
 
-		Interior.addCategory(cat.partint1);
-		Interior.addCategory(cat.partint2);
-		Interior.addCategory(cat.partint3);
+		Interior.addPartInCategory(cat.partint1);
+		Interior.addPartInCategory(cat.partint2);
+		Interior.addPartInCategory(cat.partint3);
 
 		Collection<Category> myCategories = configurator.getCategory();
 		String Int = "Interior";
@@ -210,9 +218,8 @@ public class TestConfigurator {
 	 */
 	@Test
 	public void testAddPart1() {
-		Engine.addCategory(cat.parttrans1);
 		assertTrue(configurator.addPart(cat.partengine1));
-		//System.out.println(configurator.toString());
+		System.out.println(configurator.toString());
 	}
 
 	/*
@@ -222,7 +229,7 @@ public class TestConfigurator {
 	 */
 	@Test
 	public void testAddPart2() {
-		//Engine.addCategory(cat.partengine1);
+		//Engine.addPartInCategory(cat.partengine1);
 		assertTrue(configurator.addPart(cat.partengine1));
 		assertFalse(configurator.addPart(cat.partengine1));
 		//System.out.println(configurator.toString());
@@ -235,7 +242,7 @@ public class TestConfigurator {
 	 */
 	@Test
 	public void testRemovePart1() {
-		Engine.addCategory(cat.partengine1);
+		Engine.addPartInCategory(cat.partengine1);
 		/*Map<Category,PartType> catalog = new HashMap<Category, PartType>();
 		catalog.put(Engine, cat.partengine1);
 		ConfigImpl c = new ConfigImpl(catalog);
@@ -245,7 +252,7 @@ public class TestConfigurator {
 		assertTrue(c.AddPart(cat.partengine1));
 		assertTrue(c.RemovePart(cat.partengine1));*/
 		assertTrue(configurator.addPart(cat.partengine1));
-		System.out.println(configurator.toString());
+		//System.out.println(configurator.toString());
 		assertTrue(configurator.removePart(cat.partengine1));
 	
 	}
@@ -284,15 +291,11 @@ public class TestConfigurator {
 	 */
 	@Test
 	public void isValid1() {
-		Engine.addCategory(cat.partengine1);
-		Transmission.addCategory(cat.parttrans1);
-		Exterior.addCategory(cat.partext1);
-		Interior.addCategory(cat.partint1);
 		cat.cataconfig.put(cat.partengine1.getCategory(), cat.partengine1);
 		cat.cataconfig.put(cat.parttrans1.getCategory(), cat.parttrans1);
 		cat.cataconfig.put(cat.partext1.getCategory(), cat.partext1);
 		cat.cataconfig.put(cat.partint1.getCategory(), cat.partint1);
-		//System.out.println(cat.cataconfig.toString());
+		System.out.println(cat.cataconfig.toString());
 		ConfigImpl config = new ConfigImpl(cat.cataconfig);
 		configurator.setConfig(config);
 		assertTrue(configurator.isValid());
@@ -306,12 +309,6 @@ public class TestConfigurator {
 	 */
 	@Test
 	public void isInvalid1() {
-
-		Engine.addCategory(cat.partengine1);
-		Transmission.addCategory(cat.parttrans1);
-		Exterior.addCategory(cat.partext1);
-		Interior.addCategory(cat.partint1);
-		Interior.addCategory(cat.partint2);
 		cat.cataconfig.put(cat.partengine1.getCategory(), cat.partengine1);
 		cat.cataconfig.put(cat.parttrans1.getCategory(), cat.parttrans1);
 		cat.cataconfig.put(cat.partint1.getCategory(), cat.partint1);
@@ -328,11 +325,6 @@ public class TestConfigurator {
 	 */
 	@Test
 	public void isInvalid2() {
-
-		Engine.addCategory(cat.partengine1);
-		Transmission.addCategory(cat.parttrans1);
-		Exterior.addCategory(cat.partext1);
-		Interior.addCategory(cat.partint1);
 		cat.cataconfig.put(cat.partengine1.getCategory(), cat.partengine1);
 		cat.cataconfig.put(cat.parttrans1.getCategory(), cat.parttrans1);
 		cat.cataconfig.put(cat.partext1.getCategory(), cat.partext1);
