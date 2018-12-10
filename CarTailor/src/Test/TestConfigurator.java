@@ -23,6 +23,7 @@ public class TestConfigurator {
 
 	// The constructor of ConfiguratorImpl use InitConfigurator();
 
+	private int count = 0;
 	private Catalogue cat = new Catalogue();
 	private Configurator configurator = new ConfiguratorImpl();
 	private Category Engine = new CategoryImpl("Engine");
@@ -31,184 +32,120 @@ public class TestConfigurator {
 	private Category Interior = new CategoryImpl("Interior");
 
 	/*
+	 * Initalizing Test of the configurator
+	 * 
 	 * The configurator contains only the four Category (Engine, Transmission,
 	 * Exterior, Interior)
 	 */
 
 	@Test
-	public void testInit1() {
-
-		/*Collection<Category> toCompare = new HashSet<>();
-		toCompare.add(Transmission);
-		toCompare.add(Interior);
-		toCompare.add(Exterior);
-		toCompare.add(Engine);
-
-		Collection<Category> myCat = configurator.getCategory();
-
-		Collection<String> toCompareString = new HashSet<>();
-		for (Category c : toCompare) {
-			toCompareString.add(c.getCategoryString());
-		}
-
-		Collection<String> myCatString = new HashSet<>();
-		for (Category c : myCat) {
-			myCatString.add(c.getCategoryString());
-		}*/
+	public void TestInitConfigurator() {
 		cat.cataconfig.put(cat.partengine1.getCategory(), cat.partengine1);
 		cat.cataconfig.put(cat.parttrans1.getCategory(), cat.parttrans1);
 		cat.cataconfig.put(cat.partext1.getCategory(), cat.partext1);
 		cat.cataconfig.put(cat.partint1.getCategory(), cat.partint1);
-
-
-		assertTrue(myCat.size() == 4);
-		assertEquals(myCatString.containsAll(toCompareString), toCompareString.containsAll(myCatString));
+		ConfigImpl config = new ConfigImpl(cat.cataconfig);
+		configurator.setConfig(config);
+		Collection<Category> coll = cat.cataconfig.keySet();
+		for (@SuppressWarnings("unused")
+		Category c : coll) {
+			count++;
+		}
+		assertTrue(count == 4);
+		assertTrue(coll.containsAll(cat.cataconfig.keySet()));
 	}
 
 	/*
+	 * Initalizing Test of the configurator
+	 * 
 	 * The configurator contains all the PartType available in the category Engine
 	 */
 
 	@Test
-	public void testInit2() {
-
-		Engine.addPartInCategory(cat.partengine1);
-		Engine.addPartInCategory(cat.partengine2);
-		Engine.addPartInCategory(cat.partengine3);
-		Engine.addPartInCategory(cat.partengine4);
-		Engine.addPartInCategory(cat.partengine5);
-		Engine.addPartInCategory(cat.partengine6);
-
-		Collection<Category> myCategories = configurator.getCategory();
-		//System.out.println(configurator.toString());
-		/*String Eng = "Engine";
-		Set<PartType> setP = new HashSet<>();
-		for (Category c : myCategories) {
-			if (c.getCategoryString() == Eng) {
-				setP = c.getPartImpl();
-				break;
-			}
+	public void TestInitEngine() {
+		cat.cataconfig.put(cat.partengine1.getCategory(), cat.partengine1);
+		cat.cataconfig.put(cat.partengine2.getCategory(), cat.partengine2);
+		cat.cataconfig.put(cat.partengine3.getCategory(), cat.partengine3);
+		cat.cataconfig.put(cat.partengine4.getCategory(), cat.partengine4);
+		cat.cataconfig.put(cat.partengine5.getCategory(), cat.partengine5);
+		cat.cataconfig.put(cat.partengine6.getCategory(), cat.partengine6);
+		ConfigImpl config = new ConfigImpl(cat.cataconfig);
+		configurator.setConfig(config);
+		Collection<Category> coll = cat.cataconfig.keySet();
+		for (@SuppressWarnings("unused")
+		Category c : coll) {
+			count++;
 		}
-		Set<String> setPToString = new HashSet<>();
-		for (PartType p : setP) {
-			setPToString.add(p.getName().partName);
-		}
-		Collection<PartType> toCompare = Engine.getPartImpl();
-		Set<String> toCompareWith = new HashSet<>();
-		for (PartType p : toCompare) {
-			toCompareWith.add(p.getName().partName);
-		}*/
-		cat.cataconfig.put(Engine, cat.partengine1);
-		
-		// System.out.println(Engine.toString());
-		//assertTrue(toCompareWith.size() == 6);
-		//assertEquals(toCompareWith.containsAll(setPToString), setPToString.containsAll(toCompareWith));
+		assertTrue(count == 6);
+		assertTrue(coll.containsAll(cat.cataconfig.keySet()));
 	}
 
 	/*
+	 * Initalizing Test of the configurator
+	 * 
 	 * The configurator contains all the PartType available in the category
 	 * Transmission
 	 */
 
 	@Test
-	public void testInit3() {
-
-		Transmission.addPartInCategory(cat.parttrans1);
-		Transmission.addPartInCategory(cat.parttrans2);
-		Transmission.addPartInCategory(cat.parttrans3);
-		Transmission.addPartInCategory(cat.parttrans4);
-		Transmission.addPartInCategory(cat.parttrans5);
-		Transmission.addPartInCategory(cat.parttrans6);
-
-		Collection<Category> myCategories = configurator.getCategory();
-		String Trans = "Transmission";
-		Set<PartType> setP = new HashSet<>();
-		for (Category c : myCategories) {
-			if (c.getCategoryString() == Trans) {
-				setP = c.getPartImpl();
-				break;
-			}
+	public void TestInitTransmission() {
+		cat.cataconfig.put(cat.partengine1.getCategory(), cat.partengine1);
+		cat.cataconfig.put(cat.partengine2.getCategory(), cat.partengine2);
+		cat.cataconfig.put(cat.partengine3.getCategory(), cat.partengine3);
+		cat.cataconfig.put(cat.partengine4.getCategory(), cat.partengine4);
+		cat.cataconfig.put(cat.partengine5.getCategory(), cat.partengine5);
+		cat.cataconfig.put(cat.partengine6.getCategory(), cat.partengine6);
+		ConfigImpl config = new ConfigImpl(cat.cataconfig);
+		configurator.setConfig(config);
+		Collection<Category> coll = cat.cataconfig.keySet();
+		for (@SuppressWarnings("unused")
+		Category c : coll) {
+			count++;
 		}
-		Set<String> setPToString = new HashSet<>();
-		for (PartType p : setP) {
-			setPToString.add(p.getName().partName);
-		}
-		Collection<PartType> toCompare = Transmission.getPartImpl();
-		Set<String> toCompareWith = new HashSet<>();
-		for (PartType p : toCompare) {
-			toCompareWith.add(p.getName().partName);
-		}
-
-		assertTrue(toCompareWith.size() == 6);
-		assertEquals(toCompareWith.containsAll(setPToString), setPToString.containsAll(toCompareWith));
+		assertTrue(count == 6);
+		assertTrue(coll.containsAll(cat.cataconfig.keySet()));
 	}
-
 	/*
+	 * Initalizing Test of the configurator
+	 * 
 	 * The configurator contains all the PartType available in the category Exterior
 	 */
 
 	@Test
-	public void testInit4() {
-
-		Exterior.addPartInCategory(cat.partext1);
-		Exterior.addPartInCategory(cat.partext2);
-		Exterior.addPartInCategory(cat.partext3);
-
-		Collection<Category> myCategories = configurator.getCategory();
-		String Ext = "Exterior";
-		Set<PartType> setP = new HashSet<>();
-		for (Category c : myCategories) {
-			if (c.getCategoryString() == Ext) {
-				setP = c.getPartImpl();
-				break;
-			}
+	public void TestInitExterior() {
+		cat.cataconfig.put(cat.partengine1.getCategory(), cat.partengine1);
+		cat.cataconfig.put(cat.partengine2.getCategory(), cat.partengine2);
+		cat.cataconfig.put(cat.partengine3.getCategory(), cat.partengine3);
+		ConfigImpl config = new ConfigImpl(cat.cataconfig);
+		configurator.setConfig(config);
+		Collection<Category> coll = cat.cataconfig.keySet();
+		for (@SuppressWarnings("unused")
+		Category c : coll) {
+			count++;
 		}
-		Set<String> setPToString = new HashSet<>();
-		for (PartType p : setP) {
-			setPToString.add(p.getName().partName);
-		}
-		Collection<PartType> toCompare = Exterior.getPartImpl();
-		Set<String> toCompareWith = new HashSet<>();
-		for (PartType p : toCompare) {
-			toCompareWith.add(p.getName().partName);
-		}
-
-		assertTrue(toCompareWith.size() == 3);
-		assertEquals(toCompareWith.containsAll(setPToString), setPToString.containsAll(toCompareWith));
+		assertTrue(count == 3);
+		assertTrue(coll.containsAll(cat.cataconfig.keySet()));
 	}
-
 	/*
+	 * Initalizing Test of the configurator
+	 * 
 	 * The configurator contains all the PartType available in the category Interior
 	 */
 
 	@Test
-	public void testInit5() {
-
-		Interior.addPartInCategory(cat.partint1);
-		Interior.addPartInCategory(cat.partint2);
-		Interior.addPartInCategory(cat.partint3);
-
-		Collection<Category> myCategories = configurator.getCategory();
-		String Int = "Interior";
-		Set<PartType> setP = new HashSet<>();
-		for (Category c : myCategories) {
-			if (c.getCategoryString() == Int) {
-				setP = c.getPartImpl();
-				break;
-			}
+	public void TestInitInterior() {
+		cat.cataconfig.put(cat.partengine1.getCategory(), cat.partengine1);
+		cat.cataconfig.put(cat.partengine2.getCategory(), cat.partengine2);
+		cat.cataconfig.put(cat.partengine3.getCategory(), cat.partengine3);
+		ConfigImpl config = new ConfigImpl(cat.cataconfig);
+		configurator.setConfig(config);
+		Collection<Category> coll = cat.cataconfig.keySet();
+		for (@SuppressWarnings("unused")
+		Category c : coll) {
+			count++;
 		}
-		Set<String> setPToString = new HashSet<>();
-		for (PartType p : setP) {
-			setPToString.add(p.getName().partName);
-		}
-		Collection<PartType> toCompare = Interior.getPartImpl();
-		Set<String> toCompareWith = new HashSet<>();
-		for (PartType p : toCompare) {
-			toCompareWith.add(p.getName().partName);
-		}
-
-		assertTrue(toCompareWith.size() == 3);
-		assertEquals(toCompareWith.containsAll(setPToString), setPToString.containsAll(toCompareWith));
+		assertTrue(count == 3);
+		assertTrue(coll.containsAll(cat.cataconfig.keySet()));
 	}
 
 	/*
@@ -217,9 +154,8 @@ public class TestConfigurator {
 	 * @return true : Can add a part in the config
 	 */
 	@Test
-	public void testAddPart1() {
+	public void TestAddPart() {
 		assertTrue(configurator.addPart(cat.partengine1));
-		System.out.println(configurator.toString());
 	}
 
 	/*
@@ -228,11 +164,9 @@ public class TestConfigurator {
 	 * @return false : Can't add twice a same part in the config
 	 */
 	@Test
-	public void testAddPart2() {
-		//Engine.addPartInCategory(cat.partengine1);
+	public void TestAddNotSamePart() {
 		assertTrue(configurator.addPart(cat.partengine1));
 		assertFalse(configurator.addPart(cat.partengine1));
-		//System.out.println(configurator.toString());
 	}
 
 	/*
@@ -241,20 +175,11 @@ public class TestConfigurator {
 	 * @return true : Can remove a part from the config
 	 */
 	@Test
-	public void testRemovePart1() {
-		Engine.addPartInCategory(cat.partengine1);
-		/*Map<Category,PartType> catalog = new HashMap<Category, PartType>();
-		catalog.put(Engine, cat.partengine1);
-		ConfigImpl c = new ConfigImpl(catalog);
-
-		configurator.setConfig(c);
-// A revoir ..?
-		assertTrue(c.AddPart(cat.partengine1));
-		assertTrue(c.RemovePart(cat.partengine1));*/
+	public void TestRemovePart() {
 		assertTrue(configurator.addPart(cat.partengine1));
-		//System.out.println(configurator.toString());
+		System.out.println(configurator.toString());
 		assertTrue(configurator.removePart(cat.partengine1));
-	
+
 	}
 
 	/*
@@ -264,7 +189,7 @@ public class TestConfigurator {
 	 * before
 	 */
 	@Test
-	public void testRemovePart2() {
+	public void TestRemoveNotPart() {
 		assertFalse(configurator.removePart(cat.partengine1));
 	}
 
@@ -290,12 +215,11 @@ public class TestConfigurator {
 	 * @return true : Config is valid for the configurator
 	 */
 	@Test
-	public void isValid1() {
+	public void isValidConfigurator() {
 		cat.cataconfig.put(cat.partengine1.getCategory(), cat.partengine1);
 		cat.cataconfig.put(cat.parttrans1.getCategory(), cat.parttrans1);
 		cat.cataconfig.put(cat.partext1.getCategory(), cat.partext1);
 		cat.cataconfig.put(cat.partint1.getCategory(), cat.partint1);
-		System.out.println(cat.cataconfig.toString());
 		ConfigImpl config = new ConfigImpl(cat.cataconfig);
 		configurator.setConfig(config);
 		assertTrue(configurator.isValid());
@@ -305,33 +229,46 @@ public class TestConfigurator {
 	/*
 	 * Test isValid method
 	 * 
-	 * @return false : Config is invalid for the configurator because one part is missing
+	 * @return false : Config is invalid for the configurator because it's empty
 	 */
 	@Test
-	public void isInvalid1() {
+	public void isInvalidConfigurator() {
+		ConfigImpl config = new ConfigImpl(cat.cataconfig);
+		configurator.setConfig(config);
+		assertFalse(configurator.isValid());
+	}
+	
+	/*
+	 * Test isValid method
+	 * 
+	 * @return false : Config is invalid for the configurator because one part is
+	 * missing
+	 */
+	@Test
+	public void isInvalidConfiguratorMiss1() {
 		cat.cataconfig.put(cat.partengine1.getCategory(), cat.partengine1);
 		cat.cataconfig.put(cat.parttrans1.getCategory(), cat.parttrans1);
 		cat.cataconfig.put(cat.partint1.getCategory(), cat.partint1);
-		//System.out.println(cat.cataconfig.toString());
-		ConfigImpl config = new ConfigImpl(cat.cataconfig); //On ajoute le map créer dans une config 
+		ConfigImpl config = new ConfigImpl(cat.cataconfig); // On ajoute le map créer dans une config
 		configurator.setConfig(config); // On met cette config dans le configurator
-		assertFalse(configurator.isValid()); //On test si le configurator est valide 
+		assertFalse(configurator.isValid()); // On test si le configurator est valide
 	}
 
 	/*
 	 * Test isValid method
 	 * 
-	 * @return false : Config is invalid for the configurator because 2 parts of the same Category are added
+	 * @return false : Config is invalid for the configurator because 2 parts of the
+	 * same Category are added
 	 */
 	@Test
-	public void isInvalid2() {
+	public void isInvalidConfiguratorSameCategory() {
 		cat.cataconfig.put(cat.partengine1.getCategory(), cat.partengine1);
 		cat.cataconfig.put(cat.parttrans1.getCategory(), cat.parttrans1);
 		cat.cataconfig.put(cat.partext1.getCategory(), cat.partext1);
 		cat.cataconfig.put(cat.partext1.getCategory(), cat.partext1);
-		//System.out.println(cat.cataconfig.toString());
 		ConfigImpl config = new ConfigImpl(cat.cataconfig);
 		configurator.setConfig(config);
 		assertFalse(configurator.isValid());
 	}
+	
 }

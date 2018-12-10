@@ -27,50 +27,50 @@ public class TestCategory {
 	//private PartType partype4 = catalogue.partint1;
 
 	/**
-	 * Test of AddCategory method
+	 * Test of addPartInCategory method
 	 * @return true : Can add a Part in his own category
 	 */
 	@Test
 	public void TestAddInCategory() {
-		assertTrue(category.addCategory(partype1));
+		assertTrue(category.addPartInCategory(partype1));
 	}
 
 	/**
-	 * Test of AddCategory method
+	 * Test of addPartInCategory method
 	 * @return false : Can't add a part of another category in the current category
 	 */
 	@Test
 	public void TestAddNotInCategory() {
-		assertFalse(category.addCategory(partype2));
+		assertFalse(category.addPartInCategory(partype2));
 	}
 	
 	/**
-	 * Test of AddCategory method
+	 * Test of addPartInCategory method
 	 * @return false : Can't add twice a part in the same category
 	 */
 	@Test
 	public void TestAddNotSameInCategory() {
-		assertTrue(category.addCategory(partype1));
-		assertFalse(category.addCategory(partype1));
+		assertTrue(category.addPartInCategory(partype1));
+		assertFalse(category.addPartInCategory(partype1));
 	}
 
 	/**
-	 * Test of RemoveCategory method
+	 * Test of removePartInCategory method
 	 * @return true : Can remove a Part from a category
 	 */
 	@Test
 	public void TestRemoveInCategory() {
-		assertTrue(category2.addCategory(partype3));
-		assertTrue(category2.removeCategory(partype3));
+		assertTrue(category2.addPartInCategory(partype3));
+		assertTrue(category2.removePartInCategory(partype3));
 	}
 
 	/**
-	 * Test of RemoveCategory method
+	 * Test of removePartInCategory method
 	 * @return false : Can't remove a Part from a category if it doesn't exist in
 	 */
 	@Test
 	public void TestRemoveNotInCategory() {
-		assertFalse(category2.removeCategory(partype3));
+		assertFalse(category2.removePartInCategory(partype3));
 	}
 	
 }

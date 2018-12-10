@@ -40,8 +40,7 @@ public class ConfiguratorImpl implements Configurator {
 		this.myConfig = config;
 		this.compatibilityManager.ChangeConfig(config);
 	}
-
-
+	
 	public boolean addPart(PartType p) {
 		boolean result = false;
 		for(Category c : CategoryAvailable) {
