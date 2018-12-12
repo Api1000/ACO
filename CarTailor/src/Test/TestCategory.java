@@ -4,9 +4,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import Impl.CategoryImpl;
-import Impl.ConfigImpl;
 import Interfaces.Category;
-import Interfaces.Configuration;
 import Interfaces.PartType;
 import model.Catalogue;
 

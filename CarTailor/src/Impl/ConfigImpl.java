@@ -1,19 +1,12 @@
 package Impl;
 
-import java.util.Set;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 
 import Interfaces.Category;
 import Interfaces.Configuration;
-import Interfaces.IncompatibilityManager;
 import Interfaces.PartType;
-import model.Catalogue;
-import model.PartDescription;
-import model.PartName;
-import Interfaces.Observable;
 
 public class ConfigImpl extends ObservableImpl<ConfigImpl> implements Configuration {
 

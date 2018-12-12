@@ -2,26 +2,19 @@ package Test;
 
 import static org.junit.Assert.*;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
 import Impl.CategoryImpl;
 import Impl.ConfigImpl;
-import Impl.IncompatibilityManagerImpl;
-import Impl.PartTypeImpl;
 import Interfaces.Category;
 import Interfaces.Configuration;
 import Interfaces.PartType;
 import model.Catalogue;
-import model.PartDescription;
-import model.PartName;
 
 /**
  * Tests of the ConfigImpl class
@@ -99,13 +92,12 @@ public class TestConfiguration {
 	 */
 	@Test
 	public void isValidConfig() {
-		catalogue.put(partype1.getCategory(), partype1); // On ajoute les PartType(value) et leur category(key) dans une
-															// Map
+		catalogue.put(partype1.getCategory(), partype1);
 		catalogue.put(partype3.getCategory(), partype3);
 		catalogue.put(partype4.getCategory(), partype4);
 		catalogue.put(partype5.getCategory(), partype5);
-		Configuration config = new ConfigImpl(catalogue); // On ajoute le Map créé dans une config
-		assertTrue(config.isValid()); // On test si la config est valide
+		Configuration config = new ConfigImpl(catalogue);
+		assertTrue(config.isValid());
 	}
 
 	/*
@@ -191,11 +183,8 @@ public class TestConfiguration {
 	@Test
 	public void TestShowMyPartFromCategory2() {
 		CategoryImpl cat = new CategoryImpl("Not");
-		try {
-			config1.ShowMyPartFromCategory(cat);
-		} catch (AssertionError e) {
-			assertEquals("java.lang.AssertionError: This category does not exist", e.toString());
-		}
+		config1.ShowMyPartFromCategory(cat);
+		assertEquals(config1.ShowMyPartFromCategory(cat), null);
 	}
 
 }

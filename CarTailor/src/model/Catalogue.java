@@ -1,18 +1,16 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
 import Impl.CategoryImpl;
-import Impl.ConfigImpl;
-import Impl.IncompatibilityManagerImpl;
+//import Impl.ConfigImpl;
 import Impl.PartTypeImpl;
 import Interfaces.Category;
-import Interfaces.Configuration;
+//import Interfaces.Configuration;
 import Interfaces.PartType;
 
 
@@ -25,7 +23,7 @@ import Interfaces.PartType;
  */
 public class Catalogue {
 
-	private final Configuration config = new ConfigImpl();
+	//private final Configuration config = new ConfigImpl();
 	public final Set<PartType> EngineParts = new HashSet<>();
 	public final Set<PartType> TransmissionParts = new HashSet<>();
 	public final Set<PartType> ExteriorParts = new HashSet<>();

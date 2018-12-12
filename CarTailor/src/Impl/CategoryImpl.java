@@ -1,8 +1,6 @@
 package Impl;
 
-import java.util.Set;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.LinkedHashSet;
 
 import Interfaces.Category;
 import Interfaces.PartType;
@@ -15,7 +13,7 @@ import Interfaces.PartType;
 public class CategoryImpl implements Category {
 
 	private String category;
-	private Set<PartType> partImpl;
+	private LinkedHashSet<PartType> partImpl;
 
 	public CategoryImpl() {
 		super();
@@ -23,14 +21,14 @@ public class CategoryImpl implements Category {
 
 	public CategoryImpl(String category) {
 		this.category = category;
-		this.partImpl = new HashSet<>();
+		this.partImpl = new LinkedHashSet<>();
 	}
 
 	public String getCategoryString() {
 		return category;
 	}
 
-	public Set<PartType> getPartImpl() {
+	public LinkedHashSet<PartType> getPartImpl() {
 		return partImpl;
 	}
 

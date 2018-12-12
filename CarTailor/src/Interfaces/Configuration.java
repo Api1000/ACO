@@ -1,10 +1,10 @@
 package Interfaces;
 
-import java.util.Set;
+
 import java.util.Collection;
 import java.util.Map;
 
-import model.PartName;
+
 
 /**
  * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -14,16 +14,48 @@ import model.PartName;
 
 public interface Configuration {
 
-	public boolean AddPart(PartType parameter);
+	/**
+	 * Add a part in the configuration
+	 * 
+	 * @param PartType
+	 * @return true : added
+	 * @return false : not added
+	 */
+	public boolean AddPart(PartType pT);
 
-	public boolean RemovePart(PartType parameter);
+	/**
+	 * Remove a part in the configuration
+	 * 
+	 * @param PartType
+	 * @return true : removed
+	 * @return false : not removed
+	 */
+	public boolean RemovePart(PartType pT);
 
-	public PartType ShowMyPartFromCategory(Category parameter);
+	/**
+	 * Show a part from a category
+	 * 
+	 * @param Category
+	 * @return PartType
+	 */
+	public PartType ShowMyPartFromCategory(Category cat);
 
+	/**
+	 * 
+	 * Test if the configuration is valid or not (4 != categories)
+	 * 
+	 * @return true : is valid
+	 * @return false : is not valid
+	 */
 	public boolean isValid();
 
 	public Map<Category, PartType> getcatalogue();
 
+	/**
+	 * Show parts of the configuration
+	 * 
+	 * @return PartTypes of the configuration
+	 */
 	public Collection<PartType> getMyParts();
 
 }

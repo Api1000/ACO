@@ -7,7 +7,7 @@ import model.Catalogue;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Set;
+import java.util.LinkedHashSet;
 
 import Interfaces.Category;
 
@@ -121,7 +121,7 @@ public class ConfiguratorImpl implements Configurator {
 	 * @param Category
 	 * @return all parts from a category (Set)
 	 */
-	public Set<PartType> getPartsFromCategory(Category c) {
+	public LinkedHashSet<PartType> getPartsFromCategory(Category c) {
 		Iterator<Category> it = CategoryAvailable.iterator();
 		String cToString = c.getCategoryString();
 		while (it.hasNext()) {

@@ -2,10 +2,9 @@ package Test;
 
 import static org.junit.Assert.*;
 
+import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.junit.Test;
@@ -13,7 +12,6 @@ import org.junit.Test;
 import Impl.CategoryImpl;
 import Impl.ConfigImpl;
 import Impl.ConfiguratorImpl;
-import Impl.PartTypeImpl;
 import Interfaces.Category;
 import Interfaces.Configurator;
 import Interfaces.PartType;
@@ -33,6 +31,12 @@ public class TestConfigurator {
 	private Catalogue cat = new Catalogue();
 	private Configurator configurator = new ConfiguratorImpl();
 	private Category Engine = new CategoryImpl("Engine");
+	private Category Interior = new CategoryImpl("Interior");
+	private Category Test = new CategoryImpl("Test");
+	private LinkedHashSet<PartType> Interiors = new LinkedHashSet<>();
+	private LinkedHashSet<Set<PartType>> Interiors2 = new LinkedHashSet<>();
+
+	
 
 	/*
 	 * Initalizing Test of the configurator
@@ -53,7 +57,8 @@ public class TestConfigurator {
 		Category c : coll) {
 			count++;
 		}
-		assertTrue(count == 4);
+		System.out.println(configurator.toString());
+		assertEquals(count, 4);
 		assertTrue(coll.containsAll(cat.cataconfig.keySet()));
 	}
 
@@ -77,7 +82,7 @@ public class TestConfigurator {
 		Category c : coll) {
 			count++;
 		}
-		assertTrue(count == 6);
+		assertEquals(count, 6);
 		assertTrue(coll.containsAll(cat.cataconfig.keySet()));
 	}
 
@@ -102,7 +107,7 @@ public class TestConfigurator {
 		Category c : coll) {
 			count++;
 		}
-		assertTrue(count == 6);
+		assertEquals(count, 6);
 		assertTrue(coll.containsAll(cat.cataconfig.keySet()));
 	}
 
@@ -123,7 +128,7 @@ public class TestConfigurator {
 		Category c : coll) {
 			count++;
 		}
-		assertTrue(count == 3);
+		assertEquals(count, 3);
 		assertTrue(coll.containsAll(cat.cataconfig.keySet()));
 	}
 	/*
@@ -144,7 +149,7 @@ public class TestConfigurator {
 		Category c : coll) {
 			count++;
 		}
-		assertTrue(count == 3);
+		assertEquals(count, 3);
 		assertTrue(coll.containsAll(cat.cataconfig.keySet()));
 	}
 
@@ -179,7 +184,6 @@ public class TestConfigurator {
 		cat.cataconfig.put(cat.partengine1.getCategory(), cat.partengine1);
 		ConfigImpl config = new ConfigImpl(cat.cataconfig);
 		configurator.setConfig(config);
-		System.out.println(configurator.toString());
 		assertTrue(config.RemovePart(cat.partengine1));
 	}
 
@@ -210,14 +214,43 @@ public class TestConfigurator {
 	/*
 	 * Test GetMyPartFromCategory method
 	 * 
-	 * Can not show the Part from the category if it is not in the config
+	 * Can't show the Part from the category if it is not in the config
 	 * 
 	 */
 	@Test
-	public void TestGetNotPartFromCategory() {
+	public void TestGetNotMyPartFromCategory() {
 		assertEquals(configurator.getMyPartFromCategory(Engine), null);
 	}
 
+	/**
+	 * Test GetPartFromCategory method
+	 * 
+	 * Can show parts from a given category of the config
+	 */
+	@Test
+	public void TestGetPartsFromCategory() {
+		cat.cataconfig.put(cat.partint1.getCategory(), cat.partint1);
+		ConfigImpl config = new ConfigImpl(cat.cataconfig);
+		configurator.setConfig(config);
+		Interiors.add(cat.partint1);
+		Interiors.add(cat.partint2);
+		Interiors.add(cat.partint3);
+		Interiors.toArray();
+		Interiors2.add(configurator.getPartsFromCategory(Interior));
+		Object[] tab = configurator.getPartsFromCategory(Interior).toArray();
+		assertEquals(Arrays.toString(tab), Interiors.toString()); 
+	}
+	
+	/**
+	 * Test GetPartFromCategory method
+	 * 
+	 * Can't show parts from a given category of the config if this category doesn't exist
+	 */
+	@Test
+	public void TestGetNotPartsFromCategory() {
+		assertEquals(configurator.getPartsFromCategory(Test), null);
+	}
+	
 	/*
 	 * Test isValid method
 	 * 
